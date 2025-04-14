@@ -17,10 +17,10 @@ grid = ExtResource("2_cqsw4")
 
 [node name="PawnAgent" parent="." instance=ExtResource("3_cqsw4")]
 unique_name_in_owner = true
-position = Vector2(240, 100)
+position = Vector2(240, 135)
 
 [node name="DiceView" parent="." instance=ExtResource("5_cqsw4")]
-position = Vector2(202, 99)
+position = Vector2(303, 196)
 scale = Vector2(4, 4)
 
 [node name="DiceButton" type="Button" parent="."]

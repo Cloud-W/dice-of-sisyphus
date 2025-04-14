@@ -30,4 +30,4 @@ func _calcualte_position(cell: Cell) -> Vector2:
 
 
 func get_cell_position(index: int) -> Vector2:
-	return _calcualte_position(grid.cells[index])
+	return to_global(_calcualte_position(grid.cells[index]))
