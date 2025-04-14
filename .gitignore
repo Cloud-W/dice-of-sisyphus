@@ -13,3 +13,11 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# 
+**/.idea
+**/.DS_Store
+
+# Builds
+/[Bb]uild/
+/[Bb]uilds/
