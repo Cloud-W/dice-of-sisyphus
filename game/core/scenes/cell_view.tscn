@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqqb03yfm02yn"]
+
+[ext_resource type="Texture2D" uid="uid://8fqpeqvvwvm0" path="res://game/art/kenney_tiny-battle/Tiles/tile_0108.png" id="1_4fqnt"]
+
+[node name="CellView" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4fqnt")
