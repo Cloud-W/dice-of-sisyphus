@@ -1,26 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://djxdpowbit4s6"]
+[gd_scene load_steps=6 format=3 uid="uid://djxdpowbit4s6"]
 
 [ext_resource type="Script" uid="uid://b2g2x5i5fcnqd" path="res://game/core/scenes/main.gd" id="1_vdwig"]
-[ext_resource type="Script" uid="uid://duykwwxnpt3tb" path="res://game/core/domain/grid.gd" id="2_cqsw4"]
+[ext_resource type="Resource" uid="uid://bwj1c2bmqjrp1" path="res://game/core/contents/grid.tres" id="2_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dnrr0ruea8hf4" path="res://game/core/scenes/grid_view.tscn" id="2_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://b7est13dmqmtm" path="res://game/core/scenes/pawn_agent.tscn" id="3_cqsw4"]
-[ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/dice_view.tscn" id="5_cqsw4"]
-
-[sub_resource type="Resource" id="Resource_a0k7d"]
-script = ExtResource("2_cqsw4")
-max_size = 8
-metadata/_custom_type_script = "uid://duykwwxnpt3tb"
+[ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/core/scenes/dice_view.tscn" id="5_cqsw4"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vdwig")
-_grid = SubResource("Resource_a0k7d")
+_grid = ExtResource("2_cqsw4")
 
 [node name="GridView" parent="." instance=ExtResource("2_gq6jr")]
 unique_name_in_owner = true
+position = Vector2(240, 135)
+grid = ExtResource("2_cqsw4")
 
 [node name="PawnAgent" parent="." instance=ExtResource("3_cqsw4")]
 unique_name_in_owner = true
-position = Vector2(100, 100)
+position = Vector2(240, 100)
 
 [node name="DiceView" parent="." instance=ExtResource("5_cqsw4")]
 position = Vector2(202, 99)
@@ -34,4 +31,5 @@ offset_bottom = 261.0
 text = "Roll
 "
 
+[connection signal="on_dice_roll" from="DiceView" to="." method="_move_pawn"]
 [connection signal="pressed" from="DiceButton" to="DiceView" method="roll"]

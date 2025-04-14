@@ -2,6 +2,7 @@ class_name Grid
 extends Resource
 
 @export var max_size: int = 8
+@export var positions_config : Array[Vector2i]
 
 var cells: Array[Cell] = []
 

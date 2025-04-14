@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Grid" load_steps=2 format=3 uid="uid://bwj1c2bmqjrp1"]
+
+[ext_resource type="Script" uid="uid://duykwwxnpt3tb" path="res://game/core/domain/grid.gd" id="1_t4dfi"]
+
+[resource]
+script = ExtResource("1_t4dfi")
+max_size = 8
+positions_config = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(1, 2), Vector2i(0, 2), Vector2i(0, 1)])
+metadata/_custom_type_script = "uid://duykwwxnpt3tb"

@@ -24,9 +24,10 @@ func _update_grid() -> void:
 
 
 func _calcualte_position(cell: Cell) -> Vector2:
-	return Vector2(cell.index * cell_view_size.x, 0)
+	var pos : Vector2 = grid.positions_config[cell.index] * cell_view_size.x;
+	#return Vector2(cell.index * cell_view_size.x, 0)
+	return pos
 
 
 func get_cell_position(index: int) -> Vector2:
 	return _calcualte_position(grid.cells[index])
-

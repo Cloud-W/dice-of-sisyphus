@@ -3,6 +3,5 @@
 [ext_resource type="Script" uid="uid://b1pmjbhoicxlh" path="res://game/core/scenes/grid_view.gd" id="1_7ohbi"]
 
 [node name="GridView" type="Node2D"]
-position = Vector2(100, 100)
 script = ExtResource("1_7ohbi")
 cell_view_size = Vector2(64, 64)
