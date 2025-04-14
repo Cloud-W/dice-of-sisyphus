@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://dg1gki2u5xcxg"]
+
+[ext_resource type="Script" uid="uid://pauhjejg6ifg" path="res://game/core/scenes/dice_view.gd" id="1_4843f"]
+[ext_resource type="Texture2D" uid="uid://dd8yyqfh5ebh0" path="res://game/art/kenney_tiny-battle/six sided die.png" id="2_j3ppn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4843f"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ppn"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ym8x"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aut2e"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47dkp"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni8ox"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fetdp"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(0, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1uhw"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(16, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5monx"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(32, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rwxx"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(48, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ll46"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(64, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v35hw"]
+atlas = ExtResource("2_j3ppn")
+region = Rect2(80, 224, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ym8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4843f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3ppn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ym8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aut2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47dkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni8ox")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fetdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1uhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5monx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rwxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ll46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v35hw")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 24.0
+}]
+
+[node name="DiceView" type="Node2D"]
+script = ExtResource("1_4843f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_1ym8x")
+animation = &"roll"
