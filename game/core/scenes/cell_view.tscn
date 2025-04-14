@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqqb03yfm02yn"]
+[gd_scene load_steps=3 format=3 uid="uid://dqqb03yfm02yn"]
 
 [ext_resource type="Texture2D" uid="uid://8fqpeqvvwvm0" path="res://game/art/kenney_tiny-battle/Tiles/tile_0108.png" id="1_4fqnt"]
+[ext_resource type="Script" uid="uid://b2yno3ll4ydsl" path="res://game/core/scenes/cell_view.gd" id="1_24ppo"]
 
 [node name="CellView" type="Node2D"]
+script = ExtResource("1_24ppo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 texture = ExtResource("1_4fqnt")
