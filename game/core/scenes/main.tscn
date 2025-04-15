@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://djxdpowbit4s6"]
+[gd_scene load_steps=9 format=3 uid="uid://djxdpowbit4s6"]
 
 [ext_resource type="Script" uid="uid://b2g2x5i5fcnqd" path="res://game/core/scenes/main.gd" id="1_vdwig"]
 [ext_resource type="Resource" uid="uid://bwj1c2bmqjrp1" path="res://game/core/contents/grid.tres" id="2_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dnrr0ruea8hf4" path="res://game/core/scenes/grid_view.tscn" id="2_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://b7est13dmqmtm" path="res://game/core/scenes/pawn_agent.tscn" id="3_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/core/scenes/dice_view.tscn" id="5_cqsw4"]
-[ext_resource type="Script" uid="uid://cdksv3ssm83p6" path="res://game/core/scenes/gold_label.gd" id="6_a0k7d"]
+[ext_resource type="Script" path="res://game/core/scenes/gold_label.gd" id="6_a0k7d"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="7_350ir"]
+[ext_resource type="Script" uid="uid://cpako0spch7e5" path="res://game/core/scenes/set_name_panel.gd" id="8_b1bm5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vdwig")
@@ -16,18 +17,21 @@ _is_auto_roll = true
 
 [node name="GridView" parent="." instance=ExtResource("2_gq6jr")]
 unique_name_in_owner = true
-position = Vector2(240, 135)
+position = Vector2(170, 80)
 grid = ExtResource("2_cqsw4")
 
 [node name="PawnAgent" parent="." instance=ExtResource("3_cqsw4")]
 unique_name_in_owner = true
 position = Vector2(240, 135)
+_pawn = ExtResource("7_350ir")
 
 [node name="DiceView" parent="." instance=ExtResource("5_cqsw4")]
+unique_name_in_owner = true
 position = Vector2(303, 196)
 scale = Vector2(4, 4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -66,7 +70,42 @@ vertical_alignment = 1
 script = ExtResource("6_a0k7d")
 pawn = ExtResource("7_350ir")
 
+[node name="SetNamePanel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -69.0
+offset_right = 111.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_b1bm5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SetNamePanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/SetNamePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "起名界面："
+horizontal_alignment = 1
+
+[node name="NameEdit" type="LineEdit" parent="CanvasLayer/SetNamePanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "给牛🐎起个名字："
+
 [connection signal="move_pawn_completed" from="." to="DiceView" method="_on_roll_completed"]
 [connection signal="roll_requested" from="." to="DiceView" method="roll"]
 [connection signal="on_dice_roll" from="DiceView" to="." method="_move_pawn"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/DiceButton" to="DiceView" method="roll"]
+[connection signal="on_name_set" from="CanvasLayer/SetNamePanel" to="." method="_set_name"]
+[connection signal="text_submitted" from="CanvasLayer/SetNamePanel/VBoxContainer/NameEdit" to="CanvasLayer/SetNamePanel" method="_on_name_change"]

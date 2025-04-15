@@ -9,6 +9,7 @@ signal roll_requested
 
 @onready var _grid_view: GridView = %GridView
 @onready var _pawn_agent: PawnAgent = %PawnAgent
+@onready var _diceView : DiceView = %DiceView
 
 var _current_index: int = 0
 
@@ -16,6 +17,8 @@ var _current_index: int = 0
 func _ready() -> void:
 	_grid.set_up()
 	_grid_view.grid = _grid
+	_pawn_agent.move_to(_grid_view.get_cell_position(0))
+	_diceView.global_position = _grid_view.get_grid_center()
 
 
 func _move_pawn(step: int):
@@ -48,3 +51,8 @@ func _exit_current_cell():
 	var cell: Cell = _grid.cells[_current_index]
 	cell.exit(_pawn)
 	
+func _set_name(value : String):
+	_pawn.name = value
+	
+	
+

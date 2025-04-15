@@ -31,3 +31,11 @@ func _calcualte_position(cell: Cell) -> Vector2:
 
 func get_cell_position(index: int) -> Vector2:
 	return to_global(_calcualte_position(grid.cells[index]))
+
+func get_grid_center() -> Vector2:
+	var vec : Vector2 = Vector2.ZERO
+	var size = grid.cells.size()
+	for i in size:
+		vec = vec + get_cell_position(i)
+	
+	return vec/size
