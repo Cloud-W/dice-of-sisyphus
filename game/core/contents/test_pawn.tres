@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Pawn" load_steps=2 format=3 uid="uid://b45utuprl1cjo"]
+
+[ext_resource type="Script" uid="uid://ctvjk3y400dab" path="res://game/core/domain/pawn.gd" id="1_nf4uv"]
+
+[resource]
+script = ExtResource("1_nf4uv")
+name = ""
+gold = 1000
+metadata/_custom_type_script = "uid://ctvjk3y400dab"

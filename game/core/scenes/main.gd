@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var _grid: Grid
-
+@export var _pawn: Pawn
 @onready var _grid_view: GridView = %GridView
 @onready var _pawn_agent: PawnAgent = %PawnAgent
 
@@ -14,18 +14,19 @@ func _ready() -> void:
 
 func _move_pawn(step : int):
 	var index : int = _current_index + step;
-	#if index >= _grid.max_size:
-	#	index = index - _grid.max_size
 
-	var path = _grid.get_move_path(_current_index, index)
+	var path: Array[int] = _grid.get_move_path(_current_index, index)
 	_current_index = _grid.get_valid_index(index)
-
-	#var postion: Vector2         = _grid_view.get_cell_position(index)
-	#var target: Vector2 = _grid_view.to_global(postion)
 
 	var path_positions : Array[Vector2] = []
 	for i in path:
 		path_positions.append(_grid_view.get_cell_position(i))
 
-	_pawn_agent.move_path(path_positions)
+	await _pawn_agent.move_path(path_positions)
+	
+	var gold: int = randi_range(-100,100)
+	_pawn.gold += gold
+	
+	
+	
 	

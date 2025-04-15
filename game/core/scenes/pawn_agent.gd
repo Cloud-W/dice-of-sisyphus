@@ -11,4 +11,3 @@ func move_path(path: Array[Vector2]):
 		tween.play()
 		await tween.finished
 
-	
