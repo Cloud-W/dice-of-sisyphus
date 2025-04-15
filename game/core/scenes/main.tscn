@@ -47,7 +47,7 @@ size_flags_vertical = 8
 
 [node name="DiceButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Roll
+text = "Start Roll！！！
 "
 
 [node name="GoldLabel" type="Label" parent="CanvasLayer"]
@@ -66,6 +66,7 @@ vertical_alignment = 1
 script = ExtResource("6_a0k7d")
 pawn = ExtResource("7_350ir")
 
+[connection signal="move_pawn_completed" from="." to="DiceView" method="_on_roll_completed"]
 [connection signal="roll_requested" from="." to="DiceView" method="roll"]
 [connection signal="on_dice_roll" from="DiceView" to="." method="_move_pawn"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/DiceButton" to="DiceView" method="roll"]
