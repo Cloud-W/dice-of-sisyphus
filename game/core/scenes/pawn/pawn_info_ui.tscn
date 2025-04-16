@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3tavarpfg1tw"]
+
+[ext_resource type="Script" uid="uid://co260uon8qd0n" path="res://game/core/scenes/pawn/pawn_info_ui.gd" id="1_jvlo8"]
+[ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="2_17fb0"]
+
+[node name="PawnInfoUI" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 50.0
+grow_horizontal = 0
+script = ExtResource("1_jvlo8")
+pawn = ExtResource("2_17fb0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "牛马"
+horizontal_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.694293, 0.591501, 0.162613, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "还活着"
+horizontal_alignment = 2

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5oejnoanrisk"]
+
+[ext_resource type="Script" uid="uid://cpako0spch7e5" path="res://game/core/scenes/set_name_panel.gd" id="1_mhn8q"]
+
+[node name="SetNamePanel" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -69.0
+offset_right = 111.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_mhn8q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "起名界面："
+horizontal_alignment = 1
+
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "给牛🐎起个名字："
+
+[connection signal="text_submitted" from="VBoxContainer/NameEdit" to="." method="_on_name_change"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7est13dmqmtm"]
 
-[ext_resource type="Script" uid="uid://dgv4p0nd85o63" path="res://game/core/scenes/pawn_agent.gd" id="1_ed2x2"]
+[ext_resource type="Script" uid="uid://dgv4p0nd85o63" path="res://game/core/scenes/pawn/pawn_agent.gd" id="1_ed2x2"]
 [ext_resource type="Texture2D" uid="uid://d3onu3tim2la7" path="res://game/art/kenney_tiny-battle/Tiles/tile_0106.png" id="2_5imvg"]
 
 [node name="PawnAgent" type="Node2D" node_paths=PackedStringArray("_pawn_name")]

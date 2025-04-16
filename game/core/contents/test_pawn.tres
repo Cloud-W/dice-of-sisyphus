@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_nf4uv")
-name = ""
+name = "测试牛马"
 gold = 1000
+status = "艰难但坚持"
 metadata/_custom_type_script = "uid://ctvjk3y400dab"
