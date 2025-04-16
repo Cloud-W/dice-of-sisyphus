@@ -12,18 +12,18 @@ var _can_roll: bool = true
 func _ready() -> void:
 	pass
 
-
-func roll() -> void:
+	
+# result (1, 6)
+func roll(result: int) -> void:
 	if not _can_roll:
 		return
 	_can_roll = false
-	
-	var result: int = randi_range(0, 5)
+
 	animation.play("roll");
 	await get_tree().create_timer(anim_time).timeout
 	animation.play("idle");
-	animation.frame = result
-	on_dice_roll.emit(result + 1)
+	animation.frame = result - 1
+	on_dice_roll.emit(result)
 
 
 func _on_roll_completed() -> void:

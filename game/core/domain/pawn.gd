@@ -24,3 +24,5 @@ func _generate_seed_from_name(value : String) -> void:
 	print(h)
 	_rand.seed = h
 
+func roll_dice() -> int:
+	return _rand.randi_range(1, 6)

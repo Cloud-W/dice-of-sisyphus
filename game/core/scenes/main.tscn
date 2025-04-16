@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnrr0ruea8hf4" path="res://game/core/scenes/grid_view.tscn" id="2_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://b7est13dmqmtm" path="res://game/core/scenes/pawn_agent.tscn" id="3_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/core/scenes/dice_view.tscn" id="5_cqsw4"]
-[ext_resource type="Script" path="res://game/core/scenes/gold_label.gd" id="6_a0k7d"]
+[ext_resource type="Script" uid="uid://cdksv3ssm83p6" path="res://game/core/scenes/gold_label.gd" id="6_a0k7d"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="7_350ir"]
 [ext_resource type="Script" uid="uid://cpako0spch7e5" path="res://game/core/scenes/set_name_panel.gd" id="8_b1bm5"]
 
@@ -104,8 +104,7 @@ size_flags_vertical = 3
 placeholder_text = "给牛🐎起个名字："
 
 [connection signal="move_pawn_completed" from="." to="DiceView" method="_on_roll_completed"]
-[connection signal="roll_requested" from="." to="DiceView" method="roll"]
 [connection signal="on_dice_roll" from="DiceView" to="." method="_move_pawn"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/DiceButton" to="DiceView" method="roll"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/DiceButton" to="." method="start_roll"]
 [connection signal="on_name_set" from="CanvasLayer/SetNamePanel" to="." method="_set_name"]
 [connection signal="text_submitted" from="CanvasLayer/SetNamePanel/VBoxContainer/NameEdit" to="CanvasLayer/SetNamePanel" method="_on_name_change"]
