@@ -1,6 +1,6 @@
 extends Node2D
 
-signal move_pawn_completed
+signal move_pawn_completed(pawn: Pawn)
 #signal roll_requested(result: int)
 @export var _grid: Grid
 @export var _pawn: Pawn
@@ -39,9 +39,9 @@ func _move_pawn(step: int):
 	await _pawn_agent.move_path(path_positions)
 
 	_enter_current_cell()
-	move_pawn_completed.emit()
+	move_pawn_completed.emit(_pawn)
 
-	if _is_auto_roll:
+	if _is_auto_roll and _pawn.status != Pawn.Status.BROKE:
 		_roll_dice()
 
 

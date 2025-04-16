@@ -12,7 +12,7 @@ var _can_roll: bool = true
 func _ready() -> void:
 	pass
 
-	
+
 # result (1, 6)
 func roll(result: int) -> void:
 	if not _can_roll:
@@ -26,5 +26,5 @@ func roll(result: int) -> void:
 	on_dice_roll.emit(result)
 
 
-func _on_roll_completed() -> void:
+func _on_roll_completed(_pawn: Pawn) -> void:
 	_can_roll = true
