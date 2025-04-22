@@ -14,6 +14,7 @@ func _set_pawn(pawn: Pawn) -> void:
 	pass
 
 
+
 func move_to(target_pos: Vector2):
 	self.global_position = target_pos
 

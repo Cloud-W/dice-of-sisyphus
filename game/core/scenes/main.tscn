@@ -1,26 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://djxdpowbit4s6"]
+[gd_scene load_steps=11 format=3 uid="uid://djxdpowbit4s6"]
 
 [ext_resource type="Script" uid="uid://b2g2x5i5fcnqd" path="res://game/core/scenes/main.gd" id="1_vdwig"]
 [ext_resource type="Resource" uid="uid://bwj1c2bmqjrp1" path="res://game/core/contents/grid.tres" id="2_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dnrr0ruea8hf4" path="res://game/core/scenes/grid_view.tscn" id="2_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://b7est13dmqmtm" path="res://game/core/scenes/pawn/pawn_agent.tscn" id="3_cqsw4"]
+[ext_resource type="PackedScene" uid="uid://bcdq1xwrrco2w" path="res://game/core/scenes/map/map_1.tscn" id="4_ltbn1"]
 [ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/core/scenes/dice_view.tscn" id="5_cqsw4"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="7_350ir"]
 [ext_resource type="PackedScene" uid="uid://c3tavarpfg1tw" path="res://game/core/scenes/pawn/pawn_info_ui.tscn" id="7_b1bm5"]
 [ext_resource type="Script" uid="uid://bokinry7uxinb" path="res://game/core/scenes/pawn_service.gd" id="7_xwuyr"]
 [ext_resource type="PackedScene" uid="uid://c5oejnoanrisk" path="res://game/core/scenes/set_name_panel.tscn" id="8_b1bm5"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_map")]
 script = ExtResource("1_vdwig")
 _grid = ExtResource("2_cqsw4")
 _pawn = ExtResource("7_350ir")
 _is_auto_roll = true
+_map = NodePath("Visuals/Map")
 
 [node name="Visuals" type="Node2D" parent="."]
 
+[node name="Map" parent="Visuals" instance=ExtResource("4_ltbn1")]
+
 [node name="GridView" parent="Visuals" instance=ExtResource("2_gq6jr")]
 unique_name_in_owner = true
-position = Vector2(170, 80)
+visible = false
 grid = ExtResource("2_cqsw4")
 
 [node name="PawnAgent" parent="Visuals" instance=ExtResource("3_cqsw4")]
@@ -30,17 +34,14 @@ _pawn = ExtResource("7_350ir")
 
 [node name="DiceView" parent="Visuals" instance=ExtResource("5_cqsw4")]
 unique_name_in_owner = true
-position = Vector2(303, 196)
-scale = Vector2(4, 4)
+position = Vector2(104, 41)
 
 [node name="Services" type="Node" parent="."]
 
 [node name="PawnService" type="Node" parent="Services"]
 script = ExtResource("7_xwuyr")
-fail_gold_num = 1200
 
 [node name="UI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 15
@@ -68,6 +69,9 @@ text = "Start Roll！！！
 [node name="Panel" type="CanvasLayer" parent="."]
 
 [node name="SetNamePanel" parent="Panel" instance=ExtResource("8_b1bm5")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 
 [connection signal="move_pawn_completed" from="." to="Visuals/DiceView" method="_on_roll_completed"]
 [connection signal="move_pawn_completed" from="." to="Services/PawnService" method="_on_move_pawn_completed"]

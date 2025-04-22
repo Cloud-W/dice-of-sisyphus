@@ -13,6 +13,12 @@ signal status_changed
 @export var gold: int: set = _set_gold
 @export var status: Status = Status.HARD_BUT_STICK: set = _set_status
 
+# 地图上的坐标值
+var coordPos : Vector2i;
+
+# 当前移动方向
+var direction : Vector2i
+
 var _rand: RandomNumberGenerator = RandomNumberGenerator.new()
 
 

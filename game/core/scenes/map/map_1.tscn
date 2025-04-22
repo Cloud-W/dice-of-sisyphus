@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=4 uid="uid://bcdq1xwrrco2w"]
+
+[ext_resource type="Script" uid="uid://ifahcp110mte" path="res://game/core/scenes/map/map.gd" id="1_77p4i"]
+[ext_resource type="TileSet" uid="uid://ce4qcc6o1f3o7" path="res://game/core/contents/tile_set.tres" id="1_qytk3"]
+
+[node name="Map" type="Node2D" node_paths=PackedStringArray("_static_layer", "_dynamic_layer")]
+script = ExtResource("1_77p4i")
+_static_layer = NodePath("StaticLayer")
+_dynamic_layer = NodePath("DynamicLayer")
+
+[node name="StaticLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6/wIAAAAAAAgAAAD7/wAAAAACAAYAAAD+//7/AAAAAAgAAAABAAMAAAACAAYAAAD6/wAAAAABAAcAAAD6/wEAAAAAAAgAAAD6/wMAAAABAAkAAAD7/wMAAAACAAYAAAD8/wAAAAACAAYAAAD8/wMAAAACAAYAAAD9/wMAAAACAAYAAAD+//z/AAABAAcAAAD+//3/AAAAAAgAAAD+////AAAAAAgAAAD+/wAAAAADAAkAAAD+/wMAAAACAAYAAAD///z/AAACAAYAAAD//wMAAAACAAYAAAAAAPz/AAACAAYAAAAAAAMAAAACAAYAAAABAPz/AAACAAYAAAACAPz/AAACAAYAAAACAAMAAAACAAYAAAADAPz/AAACAAYAAAADAAMAAAACAAYAAAAEAPz/AAADAAcAAAAEAP3/AAAAAAgAAAAEAP7/AAAAAAgAAAAEAP//AAAAAAgAAAAEAAAAAAAAAAgAAAAEAAEAAAAAAAgAAAAEAAIAAAAAAAgAAAAEAAMAAAADAAkAAAD9/wAAAAACAAYAAAA=")
+tile_set = ExtResource("1_qytk3")
+
+[node name="DynamicLayer" type="TileMapLayer" parent="."]
+z_index = 10
+tile_map_data = PackedByteArray("AAD+////AQAAAAAAAQD7/wAAAQAAAAAAAQAEAP3/AQAAAAAAAQAAAAMAAQAAAAAAAQD8/wMAAQAAAAAAAQAEAAEAAQAAAAAAAQD6/wMAAgAAAAAAAQD///z/AQAAAAAAAQA=")
+tile_set = ExtResource("1_qytk3")
