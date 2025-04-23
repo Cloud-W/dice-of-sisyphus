@@ -52,9 +52,3 @@ func _generate_seed_from_name(value: String) -> void:
 func roll_dice() -> int:
 	return _rand.randi_range(1, 6)
 
-
-
-
-
-
-

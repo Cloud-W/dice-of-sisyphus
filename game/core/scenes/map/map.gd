@@ -28,14 +28,13 @@ func _get_cell_world_pos(layer : TileMapLayer, coord : Vector2i) -> Vector2:
 
 func enter_cell(pawn : Pawn) -> void:
 	print("enter cell")
-	#var cell = _dynamic_layer.get_cell_tile_data(pawn.coordPos)
-	var index = _dynamic_layer.get_cell_alternative_tile(pawn.coordPos)
+	var index: int = _dynamic_layer.get_cell_alternative_tile(pawn.coordPos)
 	if index < 0:
 		return
 	var child_node: EventNode = _dynamic_layer.get_child(index)
 	print(child_node.name)
-	child_node.trigger(pawn)
-	pass
+	await child_node.trigger(pawn)
+	
 
 func move_pawn(pawn : Pawn, move : int) -> Array[Vector2i]:
 	var path : Array[Vector2i] = []
