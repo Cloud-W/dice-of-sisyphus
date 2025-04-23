@@ -32,7 +32,7 @@ func enter_cell(pawn : Pawn) -> void:
 	if index < 0:
 		return
 	var child_node: EventNode = _dynamic_layer.get_child(index)
-	print(child_node.name)
+	print((child_node.get_script() as Script).resource_path)
 	await child_node.trigger(pawn)
 	
 

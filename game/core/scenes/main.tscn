@@ -13,6 +13,7 @@
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("_map")]
 script = ExtResource("1_vdwig")
+_debug_move_step = 1
 _grid = ExtResource("2_cqsw4")
 _pawn = ExtResource("7_350ir")
 _is_auto_roll = true
@@ -40,6 +41,7 @@ position = Vector2(104, 41)
 
 [node name="PawnService" type="Node" parent="Services"]
 script = ExtResource("7_xwuyr")
+_health_lose_when_broke = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 

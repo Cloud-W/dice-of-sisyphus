@@ -5,6 +5,7 @@ enum Status{
 	HARD_BUT_STICK, #艰难但坚持
 	BROKE, #破产
 	MILLIONAIRE, #百万富翁
+	DEAD, #死亡
 }
 signal gold_changed
 signal health_changed
@@ -20,6 +21,14 @@ var coordPos: Vector2i;
 # 当前移动方向
 var direction: Vector2i
 var _rand: RandomNumberGenerator = RandomNumberGenerator.new()
+
+var rand: RandomNumberGenerator:
+	get:
+		return _rand
+
+var is_dead: bool:
+	get:
+		return health <= 0
 
 
 func _set_gold(value: int) -> void:

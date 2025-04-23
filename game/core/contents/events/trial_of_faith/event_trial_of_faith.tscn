@@ -18,10 +18,14 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="TrialOfFaith" type="Node2D"]
+[node name="TrialOfFaith" type="Node2D" node_paths=PackedStringArray("_animation")]
 script = ExtResource("1_g0ism")
-_gold = 50
+_health_limit = 50
+_gold_limit = 800
+_lose_health = 10
+_gain_gold_range = Vector2i(10, 60)
+_animation = NodePath("Animation")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dhqbp")
-frame_progress = 0.27554
+frame_progress = 0.671247

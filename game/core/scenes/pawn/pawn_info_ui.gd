@@ -63,6 +63,8 @@ func _update_status() -> void:
 			status_str = "破产"
 		Pawn.Status.MILLIONAIRE:
 			status_str = "百万富翁"
+		Pawn.Status.DEAD:
+			status_str = "阿伟死了"
 		_:
 			status_str = "未知"
 

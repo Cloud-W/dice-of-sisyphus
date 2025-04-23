@@ -54,7 +54,7 @@ func _move_pawn(step: int):
 	await _enter_current_cell()
 	move_pawn_completed.emit(_pawn)
 
-	if _is_auto_roll and _pawn.status != Pawn.Status.BROKE:
+	if _is_auto_roll and not _pawn.is_dead:
 		_roll_dice()
 
 
