@@ -5,6 +5,7 @@ extends PanelContainer
 
 @onready var name_label = %NameLabel
 @onready var gold_label = %GoldLabel
+@onready var health_label = %HealthLabel
 @onready var status_label = %StatusLabel
 
 
@@ -23,18 +24,21 @@ func _set_pawn(value: Pawn) -> void:
 func _disconect_signals() -> void:
 	pawn.name_changed.disconnect(_update_name)
 	pawn.gold_changed.disconnect(_update_gold)
+	pawn.health_changed.disconnect(_update_health)
 	pawn.status_changed.disconnect(_update_status)
 
 
 func _connect_signals() -> void:
 	pawn.name_changed.connect(_update_name)
 	pawn.gold_changed.connect(_update_gold)
+	pawn.health_changed.connect(_update_health)
 	pawn.status_changed.connect(_update_status)
 
 
 func _update_pawn() -> void:
 	_update_name()
 	_update_gold()
+	_update_health()
 	_update_status()
 
 
@@ -44,6 +48,10 @@ func _update_name() -> void:
 
 func _update_gold() -> void:
 	gold_label.text = str(pawn.gold)
+
+
+func _update_health() -> void:
+	health_label.text = str(pawn.health)
 
 
 func _update_status() -> void:

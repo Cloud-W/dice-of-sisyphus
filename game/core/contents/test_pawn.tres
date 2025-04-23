@@ -6,5 +6,6 @@
 script = ExtResource("1_nf4uv")
 name = "测试牛马"
 gold = 1000
-status = "艰难但坚持"
+health = 100
+status = 0
 metadata/_custom_type_script = "uid://ctvjk3y400dab"
