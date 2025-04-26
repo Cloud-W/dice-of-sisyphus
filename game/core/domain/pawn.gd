@@ -16,11 +16,20 @@ signal status_changed
 @export var health: int: set = _set_health
 @export var status: Status = Status.HARD_BUT_STICK: set = _set_status
 
+var _rand: RandomNumberGenerator = RandomNumberGenerator.new()
+var _command: PawnCommand
 # 地图上的坐标值
 var coordPos: Vector2i;
 # 当前移动方向
 var direction: Vector2i
-var _rand: RandomNumberGenerator = RandomNumberGenerator.new()
+var state_handler: StateHandler = StateHandler.new()
+
+var command: PawnCommand:
+	get:
+		_command.pawn = self
+		return _command
+	set(value):
+		_command = value
 
 var rand: RandomNumberGenerator:
 	get:

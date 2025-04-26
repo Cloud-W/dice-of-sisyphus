@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://sn0blmcnmpiw"]
+
+[ext_resource type="Texture2D" uid="uid://pgsqdnrdmr8v" path="res://game/art/kenney_tiny-battle/Tiles/tile_0023.png" id="1_fj2jo"]
+[ext_resource type="Script" uid="uid://br6bvftbhnclc" path="res://game/core/contents/states/state_gold_bonus.gd" id="1_qhpax"]
+
+[resource]
+script = ExtResource("1_qhpax")
+id = "gold_bonus"
+name = "信仰加成"
+description = "我真的很虔诚"
+icon = ExtResource("1_fj2jo")
+count = 0
+duration = 0
+metadata/_custom_type_script = "uid://b50jdr7vcjg2y"

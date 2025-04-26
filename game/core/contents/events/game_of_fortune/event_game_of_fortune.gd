@@ -1,7 +1,10 @@
 extends EventNode
 
-@export var _gold : int
+@export var _gold: int
 
-func _on_trigger(pawn: Pawn) -> void:
-	pawn.gold += _gold
+
+func _on_trigger() -> void:
+	print("event_game_of_fortune: %s" % _gold)
+	pawn.command.add_gold(_gold)
+
 	complete_event()

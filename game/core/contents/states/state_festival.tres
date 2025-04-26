@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dgolyjpphlak1"]
+
+[ext_resource type="Script" uid="uid://oce5uxbb8m6h" path="res://game/core/contents/states/state_festival.gd" id="1_hfjxh"]
+[ext_resource type="Texture2D" uid="uid://dklwt3lcbdb22" path="res://game/art/kenney_tiny-battle/Tiles/tile_0071.png" id="1_p7rsm"]
+
+[resource]
+script = ExtResource("1_hfjxh")
+id = "festival"
+name = "节日庆典"
+description = "太好了，是节日庆典，我们有救了。"
+icon = ExtResource("1_p7rsm")
+count = 20
+duration = 5
+metadata/_custom_type_script = "uid://b50jdr7vcjg2y"

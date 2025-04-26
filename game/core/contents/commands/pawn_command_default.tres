@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dxbckxaq0klhv"]
+
+[ext_resource type="Resource" uid="uid://sn0blmcnmpiw" path="res://game/core/contents/states/state_gold_bonus.tres" id="1_bqb4j"]
+[ext_resource type="Script" uid="uid://sbnlydrdtqxl" path="res://game/core/contents/commands/pawn_command_default.gd" id="1_m0shv"]
+
+[resource]
+script = ExtResource("1_m0shv")
+_state_gold_bonus = ExtResource("1_bqb4j")
+metadata/_custom_type_script = "uid://cj764ng6wq6w7"

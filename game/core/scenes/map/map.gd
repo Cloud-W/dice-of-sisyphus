@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var _static_layer : TileMapLayer
 @export var _dynamic_layer: TileMapLayer
+@export var church: Church
 
 func _ready():
 	_dynamic_layer.child_order_changed.connect(_on_dynamic_layer_change)
@@ -31,9 +32,11 @@ func enter_cell(pawn : Pawn) -> void:
 	var index: int = _dynamic_layer.get_cell_alternative_tile(pawn.coordPos)
 	if index < 0:
 		return
-	var child_node: EventNode = _dynamic_layer.get_child(index)
-	print((child_node.get_script() as Script).resource_path)
-	await child_node.trigger(pawn)
+	var event_node: EventNode = _dynamic_layer.get_child(index)
+	print((event_node.get_script() as Script).resource_path)
+	event_node.church = church
+	event_node.pawn = pawn
+	await event_node.trigger()
 	
 
 func move_pawn(pawn : Pawn, move : int) -> Array[Vector2i]:

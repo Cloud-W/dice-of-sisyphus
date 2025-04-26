@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://djxdpowbit4s6"]
+[gd_scene load_steps=13 format=3 uid="uid://djxdpowbit4s6"]
 
 [ext_resource type="Script" uid="uid://b2g2x5i5fcnqd" path="res://game/core/scenes/main.gd" id="1_vdwig"]
 [ext_resource type="Resource" uid="uid://bwj1c2bmqjrp1" path="res://game/core/contents/grid.tres" id="2_cqsw4"]
 [ext_resource type="PackedScene" uid="uid://dnrr0ruea8hf4" path="res://game/core/scenes/grid_view.tscn" id="2_gq6jr"]
+[ext_resource type="Resource" uid="uid://cawuuhi6sppxc" path="res://game/core/contents/test_church.tres" id="3_3sc3p"]
 [ext_resource type="PackedScene" uid="uid://b7est13dmqmtm" path="res://game/core/scenes/pawn/pawn_agent.tscn" id="3_cqsw4"]
+[ext_resource type="Resource" uid="uid://dxbckxaq0klhv" path="res://game/core/contents/commands/pawn_command_default.tres" id="4_47dcn"]
 [ext_resource type="PackedScene" uid="uid://bcdq1xwrrco2w" path="res://game/core/scenes/map/map_1.tscn" id="4_ltbn1"]
 [ext_resource type="PackedScene" uid="uid://dg1gki2u5xcxg" path="res://game/core/scenes/dice_view.tscn" id="5_cqsw4"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="7_350ir"]
@@ -14,10 +16,11 @@
 [node name="Main" type="Node2D" node_paths=PackedStringArray("_map")]
 script = ExtResource("1_vdwig")
 _debug_move_step = 1
-_grid = ExtResource("2_cqsw4")
 _pawn = ExtResource("7_350ir")
+_church = ExtResource("3_3sc3p")
 _is_auto_roll = true
 _map = NodePath("Visuals/Map")
+_pawn_command = ExtResource("4_47dcn")
 
 [node name="Visuals" type="Node2D" parent="."]
 
