@@ -20,10 +20,14 @@ func add_state(state: State) -> void:
 		var state_instance: State = state.duplicate()
 		states[state.id] = state_instance
 		state_instance.state_handler = self
+		new_state_added.emit(state_instance)
 		state_instance.activate()
 	else:
 		states[state.id].count += state.count
-		states[state.id].duration += state.duration
+		# 可以改成 state.update(count, duration)
+		# - update_mode: add | replace | ignore
+		# - raise_event
+		#states[state.id].duration += state.duration
 
 
 func remove_state(state_id: String) -> void:

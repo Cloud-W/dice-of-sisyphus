@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Pawn" load_steps=2 format=3 uid="uid://b45utuprl1cjo"]
 
-[ext_resource type="Script" uid="uid://ctvjk3y400dab" path="res://game/core/domain/pawn.gd" id="1_nf4uv"]
+[ext_resource type="Script" uid="uid://ctvjk3y400dab" path="res://game/core/domain/pawns/pawn.gd" id="1_nf4uv"]
 
 [resource]
 script = ExtResource("1_nf4uv")

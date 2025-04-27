@@ -20,7 +20,6 @@ _pawn = ExtResource("7_350ir")
 _church = ExtResource("3_3sc3p")
 _is_auto_roll = true
 _map = NodePath("Visuals/Map")
-_pawn_command = ExtResource("4_47dcn")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -44,6 +43,7 @@ position = Vector2(104, 41)
 
 [node name="PawnService" type="Node" parent="Services"]
 script = ExtResource("7_xwuyr")
+_pawn_command = ExtResource("4_47dcn")
 _health_lose_when_broke = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -80,6 +80,7 @@ zoom = Vector2(4, 4)
 
 [connection signal="move_pawn_completed" from="." to="Visuals/DiceView" method="_on_roll_completed"]
 [connection signal="move_pawn_completed" from="." to="Services/PawnService" method="_on_move_pawn_completed"]
+[connection signal="setup_pawn_requested" from="." to="Services/PawnService" method="_setup_pawn"]
 [connection signal="on_dice_roll" from="Visuals/DiceView" to="." method="_move_pawn"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/DiceButton" to="." method="start_roll"]
 [connection signal="on_name_set" from="Panel/SetNamePanel" to="." method="_set_name"]

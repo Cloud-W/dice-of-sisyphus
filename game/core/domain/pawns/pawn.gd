@@ -23,6 +23,7 @@ var coordPos: Vector2i;
 # 当前移动方向
 var direction: Vector2i
 var state_container: StateContainer = StateContainer.new()
+var events : PawnEvnets = PawnEvnets.new() 
 
 var command: PawnCommand:
 	get:

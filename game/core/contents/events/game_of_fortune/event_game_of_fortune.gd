@@ -1,3 +1,4 @@
+class_name EventGameOfFortune
 extends EventNode
 
 @export var _gold: int

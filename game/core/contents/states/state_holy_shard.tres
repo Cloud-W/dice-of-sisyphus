@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ce10dshybet8y"]
+
+[ext_resource type="Texture2D" uid="uid://dtuh86vso1xpi" path="res://game/art/kenney_tiny-battle/Tiles/tile_0005.png" id="1_rqnnk"]
+[ext_resource type="Script" uid="uid://dm2d464f30k3w" path="res://game/core/contents/states/state_holy_shard.gd" id="2_rqnnk"]
+
+[resource]
+script = ExtResource("2_rqnnk")
+_collect_target = 3
+_gold_reward = 300
+id = "state_holy_shard"
+name = "神圣残片"
+description = "集齐它！"
+icon = ExtResource("1_rqnnk")
+count = 0
+duration = -1
+metadata/_custom_type_script = "uid://b50jdr7vcjg2y"

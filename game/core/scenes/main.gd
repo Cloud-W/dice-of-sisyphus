@@ -1,5 +1,6 @@
 extends Node2D
 
+signal setup_pawn_requested(pawn: Pawn)
 signal move_pawn_completed(pawn: Pawn)
 #signal roll_requested(result: int)
 @export var _debug_move_step: int = -1
@@ -7,7 +8,6 @@ signal move_pawn_completed(pawn: Pawn)
 @export var _church: Church
 @export var _is_auto_roll: bool
 @export var _map: Map
-@export var _pawn_command: PawnCommand
 
 @onready var _pawn_agent: PawnAgent = %PawnAgent
 @onready var _diceView: DiceView = %DiceView
@@ -15,15 +15,16 @@ signal move_pawn_completed(pawn: Pawn)
 
 func _ready() -> void:
 	_map.church = _church
+	setup_pawn_requested.emit(_pawn)
 
-	_pawn.command = _pawn_command
 	_pawn.direction = Vector2(1, 0)
-	_pawn_agent._pawn.coordPos = _map.get_start_coordinates()
+	_pawn.coordPos = _map.get_start_coordinates()
+	
 	_pawn_agent.move_to(_map.get_start_point())
 
 	# 确保每次角色进入格子时地图是更新完毕的
 	# 后续可以把call_deferred封装进enter_cell方法里
-	_map.call_deferred("enter_cell", _pawn_agent._pawn)
+	_map.call_deferred("enter_cell", _pawn)
 
 
 func start_roll() -> void:

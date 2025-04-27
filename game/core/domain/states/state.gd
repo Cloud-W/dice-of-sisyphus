@@ -38,15 +38,21 @@ func _on_activate() -> void:
 func _on_deactivate() -> void:
 	pass
 
+func _on_count_changed() -> void:
+	pass
+
 
 func _set_count(value: int) -> void:
 	count = value
+	_on_count_changed()
 	if count <= 0 and state_handler:
 		state_handler.remove_state(self.id)
 
 
 func _set_duration(value: int) -> void:
 	duration = value
+	
+
 
 
 func next_turn(turns: int) -> void:
