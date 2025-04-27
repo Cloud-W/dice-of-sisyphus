@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buos4mh36lo1q"]
+[gd_scene load_steps=6 format=3 uid="uid://buos4mh36lo1q"]
 
 [ext_resource type="Script" uid="uid://fddws4c8fja2" path="res://game/core/contents/events/festival/event_festival.gd" id="1_efcr4"]
 [ext_resource type="Resource" uid="uid://dgolyjpphlak1" path="res://game/core/contents/states/state_festival.tres" id="2_e3eyh"]
 [ext_resource type="Texture2D" uid="uid://dhx6c0j8lpfs1" path="res://game/art/kenney_tiny-battle/Tiles/tile_0070.png" id="2_efcr4"]
 [ext_resource type="Texture2D" uid="uid://dklwt3lcbdb22" path="res://game/art/kenney_tiny-battle/Tiles/tile_0071.png" id="3_e3eyh"]
-[ext_resource type="Resource" uid="uid://sn0blmcnmpiw" path="res://game/core/contents/states/state_gold_bonus.tres" id="3_xflms"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_08vax"]
 animations = [{
@@ -23,7 +22,6 @@ animations = [{
 [node name="EventFestival" type="Node2D" node_paths=PackedStringArray("_animation")]
 script = ExtResource("1_efcr4")
 _state_festival = ExtResource("2_e3eyh")
-_state_gold_bonus = ExtResource("3_xflms")
 _animation = NodePath("Animation")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]

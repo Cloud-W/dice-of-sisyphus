@@ -44,8 +44,8 @@ func _move_pawn(step: int):
 
 	await _pawn_agent.move_path(path_positions)
 	# 处理时间的流逝
-	_pawn.state_handler.next_turn(step)
-	_church.state_handler.next_turn(step)
+	_pawn.state_container.next_turn(step)
+	_church.state_container.next_turn(step)
 
 	await _enter_current_cell()
 	move_pawn_completed.emit(_pawn)

@@ -1,7 +1,6 @@
-﻿class_name State
+class_name State
 extends Resource
 
-signal remove_requested(state_id: String)
 @export var id: String
 @export var name: String
 
@@ -10,7 +9,12 @@ signal remove_requested(state_id: String)
 @export var count: int = 0: set = _set_count
 @export var duration: int = 0: set = _set_duration
 
+# bool is_count_stackable => +count | = count | return
+# bool is_duration_stackable => +duration | = duration | return
+#
+
 var is_active: bool = false
+var state_handler: StateHandler
 
 
 func activate() -> void:
@@ -37,21 +41,18 @@ func _on_deactivate() -> void:
 
 func _set_count(value: int) -> void:
 	count = value
-	if count <= 0:
-		remove()
+	if count <= 0 and state_handler:
+		state_handler.remove_state(self.id)
 
 
 func _set_duration(value: int) -> void:
 	duration = value
-	if duration <= 0:
-		remove()
-
-
-func remove() -> void:
-	remove_requested.emit(self.id)
 
 
 func next_turn(turns: int) -> void:
+	if duration < 0:
+		return
+
 	duration -= turns
-
-
+	if duration <= 0:
+		state_handler.remove_state(self.id)

@@ -10,5 +10,5 @@ name = "信仰加成"
 description = "我真的很虔诚"
 icon = ExtResource("1_fj2jo")
 count = 0
-duration = 0
+duration = -1
 metadata/_custom_type_script = "uid://b50jdr7vcjg2y"

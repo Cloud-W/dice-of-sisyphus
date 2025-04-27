@@ -1,44 +1,17 @@
 ﻿class_name StateHandler
 extends Resource
 
-var states: Dictionary[String, State] = {}
-
-
 func has_state(state_id: String) -> bool:
-	return states.has(state_id)
+	return false
 
 
 func get_state(state_id: String) -> State:
-	return states.get(state_id)
+	return null
 
 
 func add_state(state: State) -> void:
-	if not state:
-		return
-
-	if not states.has(state.id):
-		var state_instance: State = state.duplicate()
-		states[state.id] = state_instance
-		state_instance.remove_requested.connect(remove_state)
-		state_instance.activate()
-	else:
-		states[state.id].count += state.count
-		states[state.id].duration += state.duration
+	pass
 
 
 func remove_state(state_id: String) -> void:
-	assert(state_id)
-
-	if states.has(state_id):
-		var state = states[state_id]
-		states.erase(state_id)
-		state.remove_requested.disconnect(remove_state)
-		state.deactivate()
-
-
-func next_turn(turns: int = 1) -> void:
-	for state: State in states.values():
-		state.next_turn(turns)
-	
-	
-	
+	pass
