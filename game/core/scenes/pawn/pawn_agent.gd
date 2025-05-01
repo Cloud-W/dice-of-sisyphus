@@ -1,16 +1,17 @@
 class_name PawnAgent
 extends Node2D
 
-@export var _pawn: Pawn: set = _set_pawn
+@export var pawn: Pawn: set = _set_pawn
 @export var _pawn_name: Label
 
 
-func _set_pawn(pawn: Pawn) -> void:
-	_pawn = pawn
+func _set_pawn(value : Pawn) -> void:
+	pawn = value
 	if not is_node_ready():
 		await ready
 
-	_pawn.name_changed.connect(set_pawn_name)
+	pawn.name_changed.connect(set_pawn_name)
+	set_pawn_name()
 	pass
 
 
@@ -28,4 +29,4 @@ func move_path(path: Array[Vector2]):
 
 
 func set_pawn_name() -> void:
-	_pawn_name.text = _pawn.name
+	_pawn_name.text = pawn.name

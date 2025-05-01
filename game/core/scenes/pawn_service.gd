@@ -6,6 +6,7 @@ extends Node
 
 
 func _setup_pawn(pawn: Pawn) -> void:
+	print(pawn.name)
 	pawn.command = _pawn_command
 	pawn.state_container.new_state_added.connect(_pawn_on_new_state_added.bind(pawn))
 

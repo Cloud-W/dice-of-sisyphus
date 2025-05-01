@@ -2,6 +2,7 @@
 
 @export var _state_gold_bonus: State
 
+# 
 
 func add_gold(value: int) ->void:
 	var state_gold_bonus: State = pawn.state_container.get_state(_state_gold_bonus.id)

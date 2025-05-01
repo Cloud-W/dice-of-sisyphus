@@ -5,6 +5,7 @@ extends Node2D
 @export var _dynamic_layer: TileMapLayer
 @export var church: Church
 
+@export var _start_point_id: int = 2
 
 func _ready():
 	_dynamic_layer.child_order_changed.connect(_on_dynamic_layer_change)
@@ -13,12 +14,15 @@ func _ready():
 func _on_dynamic_layer_change():
 	for child: Node2D in _dynamic_layer.get_children():
 		var coord: Vector2 = _dynamic_layer.local_to_map(child.position)
-		_dynamic_layer.set_cell(coord, 0, Vector2i.ZERO, child.get_index())
+		var source_id = _dynamic_layer.get_cell_source_id(coord)
+		print("动态层格子坐标：", coord, " source_id: ", source_id)
+		_dynamic_layer.set_cell(coord, source_id, Vector2i.ZERO, child.get_index())
 	pass
 
 
 func get_start_coordinates() -> Vector2i:
-	var cells = _dynamic_layer.get_used_cells_by_id(2)
+	var cells = _dynamic_layer.get_used_cells_by_id(_start_point_id)
+	print("起点数量：", cells.size())
 	assert(cells.size() == 1)
 	return cells[0]
 
