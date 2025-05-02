@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djxdpowbit4s6"]
+[gd_scene load_steps=17 format=3 uid="uid://djxdpowbit4s6"]
 
 [ext_resource type="Script" uid="uid://b2g2x5i5fcnqd" path="res://game/core/scenes/main.gd" id="1_vdwig"]
 [ext_resource type="Resource" uid="uid://bwj1c2bmqjrp1" path="res://game/core/contents/grid.tres" id="2_cqsw4"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c3tavarpfg1tw" path="res://game/core/scenes/pawn/pawn_info_ui.tscn" id="7_b1bm5"]
 [ext_resource type="Script" uid="uid://bokinry7uxinb" path="res://game/core/scenes/pawn_service.gd" id="7_xwuyr"]
 [ext_resource type="PackedScene" uid="uid://c5oejnoanrisk" path="res://game/core/scenes/set_name_panel.tscn" id="8_b1bm5"]
+[ext_resource type="Script" uid="uid://co260uon8qd0n" path="res://game/core/scenes/pawn/pawn_info_ui.gd" id="12_a63di"]
+[ext_resource type="Script" uid="uid://bdueqs7dajdmi" path="res://game/core/scenes/all_pawn_info_ui.gd" id="12_hyrap"]
 [ext_resource type="PackedScene" uid="uid://1euha6fsn0bp" path="res://game/core/scenes/add_pawn_panel.tscn" id="13_vhw5r"]
 [ext_resource type="Script" uid="uid://bow436us63p0t" path="res://game/core/scenes/pawn/pawn_manager.gd" id="14_a63di"]
 
@@ -72,6 +74,109 @@ text = "Start Roll！！！
 "
 
 [node name="PawnInfoUI" parent="UI" instance=ExtResource("7_b1bm5")]
+visible = false
+
+[node name="AllPawnInfoUI" type="Control" parent="UI" node_paths=PackedStringArray("pawn_mgr")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_hyrap")
+pawn_mgr = NodePath("../../PawnManager")
+
+[node name="PawnInfoUI" type="PanelContainer" parent="UI/AllPawnInfoUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 818.0
+offset_right = 920.0
+offset_bottom = 134.0
+grow_horizontal = 0
+script = ExtResource("12_a63di")
+pawn = ExtResource("7_350ir")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/AllPawnInfoUI/PawnInfoUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer"]
+layout_mode = 2
+
+[node name="SwitchPawnButtonContainer" type="HBoxContainer" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ButtonPrevious" type="Button" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+text = "前"
+
+[node name="Control" type="Control" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonNext" type="Button" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+text = "后"
+
+[node name="NameLabel" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "牛马"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "信仰："
+
+[node name="GoldLabel" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.694293, 0.591501, 0.162613, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "健康："
+
+[node name="HealthLabel" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.329412, 0.623529, 0.14902, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "状态："
+
+[node name="StatusLabel" type="Label" parent="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "还活着"
+horizontal_alignment = 2
 
 [node name="Panel" type="CanvasLayer" parent="."]
 
@@ -94,5 +199,7 @@ metadata/_custom_type_script = "uid://bow436us63p0t"
 [connection signal="setup_pawn_requested" from="." to="Services/PawnService" method="_setup_pawn"]
 [connection signal="on_dice_roll" from="Visuals/DiceView" to="." method="_move_pawn"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/DiceButton" to="." method="start_roll"]
+[connection signal="pressed" from="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer/ButtonPrevious" to="UI/AllPawnInfoUI" method="_on_previous"]
+[connection signal="pressed" from="UI/AllPawnInfoUI/PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer/ButtonNext" to="UI/AllPawnInfoUI" method="_on_next"]
 [connection signal="on_name_set" from="Panel/SetNamePanel" to="." method="_set_name"]
 [connection signal="on_pawn_add" from="Panel/AddPawnPanel" to="." method="create_pawn"]

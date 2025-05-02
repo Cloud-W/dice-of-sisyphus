@@ -12,6 +12,7 @@ signal move_pawn_completed(pawn: Pawn)
 # 测试用
 @export var _debug_move_step: int = -1
 @export var _pawn_num : int = 2
+@export var _init_with_test_pawns : bool = true
 
 @onready var _pawn_manager : PawnManager = %PawnManager
 @onready var _pawn_agent: PawnAgent = %PawnAgent
@@ -20,12 +21,17 @@ signal move_pawn_completed(pawn: Pawn)
 func _ready() -> void:
 	_map.church = _church
 	# _init_pawn(_pawn)
+	#_create_test_pawn()
+	if _init_with_test_pawns:
+		_create_test_pawn()
 
+
+func _create_test_pawn() -> void:
+	# Create a new pawn and add it to the _pawns array.
 	for i in range(_pawn_num):
 		var name = "pawn_agent" + str(i)
 		create_pawn(name)
-		#var pawn_agent = _pawn_manager.create_pawn("pawn_agent" + str(i))
-		#_init_pawn_agent(pawn_agent)
+
 
 func create_pawn(value: String) -> void:
 	print("create_pawn")
