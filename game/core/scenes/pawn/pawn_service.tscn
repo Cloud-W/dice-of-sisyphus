@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://p2q84onvkvsp"]
+
+[ext_resource type="Script" uid="uid://bokinry7uxinb" path="res://game/core/scenes/pawn/pawn_service.gd" id="1_2ork0"]
+[ext_resource type="Resource" uid="uid://dxbckxaq0klhv" path="res://game/core/contents/commands/pawn_command_default.tres" id="2_b162g"]
+
+[node name="PawnService" type="Node"]
+script = ExtResource("1_2ork0")
+_pawn_command = ExtResource("2_b162g")
+_health_lose_when_broke = 2

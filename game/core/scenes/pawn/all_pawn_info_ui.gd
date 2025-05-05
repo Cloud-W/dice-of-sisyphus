@@ -23,9 +23,9 @@ func _on_next()-> void:
 	if _current_index >= pawn_mgr.get_pawn_num():
 		_current_index = 0
 	_set_pawn()
-
+	
+# Called when a new pawn is created.
 func _on_pawn_created(pawn: Pawn) -> void:
-	# Called when a new pawn is created.
 	# This function is called from the PawnManager.
 	# Set the pawn info UI to the current pawn
 	_current_index = pawn_mgr.get_pawn_num() - 1

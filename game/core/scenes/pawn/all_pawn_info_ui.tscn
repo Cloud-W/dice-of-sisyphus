@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://cspme4b3db000"]
+
+[ext_resource type="Script" uid="uid://bdueqs7dajdmi" path="res://game/core/scenes/pawn/all_pawn_info_ui.gd" id="1_hsac2"]
+[ext_resource type="Script" uid="uid://co260uon8qd0n" path="res://game/core/scenes/pawn/pawn_info_ui.gd" id="2_op8t0"]
+[ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="3_t8cum"]
+
+[node name="AllPawnInfoUI" type="Control" node_paths=PackedStringArray("pawn_mgr")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hsac2")
+pawn_mgr = NodePath("")
+
+[node name="PawnInfoUI" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 818.0
+offset_right = 920.0
+offset_bottom = 134.0
+grow_horizontal = 0
+script = ExtResource("2_op8t0")
+pawn = ExtResource("3_t8cum")
+
+[node name="MarginContainer" type="MarginContainer" parent="PawnInfoUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PawnInfoUI/MarginContainer"]
+layout_mode = 2
+
+[node name="SwitchPawnButtonContainer" type="HBoxContainer" parent="PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ButtonPrevious" type="Button" parent="PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+text = "前"
+
+[node name="Control" type="Control" parent="PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonNext" type="Button" parent="PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer"]
+layout_mode = 2
+text = "后"
+
+[node name="NameLabel" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "牛马"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "信仰："
+
+[node name="GoldLabel" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.694293, 0.591501, 0.162613, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "健康："
+
+[node name="HealthLabel" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.329412, 0.623529, 0.14902, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PawnInfoUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "状态："
+
+[node name="StatusLabel" type="Label" parent="PawnInfoUI/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "还活着"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer/ButtonPrevious" to="." method="_on_previous"]
+[connection signal="pressed" from="PawnInfoUI/MarginContainer/VBoxContainer/SwitchPawnButtonContainer/ButtonNext" to="." method="_on_next"]

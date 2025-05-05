@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1euha6fsn0bp"]
 
-[ext_resource type="Script" uid="uid://c2sfxlt4tifgv" path="res://game/core/scenes/add_pawn_panel.gd" id="1_8oej2"]
+[ext_resource type="Script" uid="uid://c2sfxlt4tifgv" path="res://game/core/scenes/pawn/add_pawn_panel.gd" id="1_8oej2"]
 
 [node name="AddPawnPanel" type="PanelContainer"]
 anchors_preset = 8
