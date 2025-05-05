@@ -4,13 +4,12 @@
 [ext_resource type="Script" uid="uid://co260uon8qd0n" path="res://game/core/scenes/pawn/pawn_info_ui.gd" id="2_op8t0"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="3_t8cum"]
 
-[node name="AllPawnInfoUI" type="Control" node_paths=PackedStringArray("pawn_mgr")]
+[node name="AllPawnInfoUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_hsac2")
-pawn_mgr = NodePath("")
 
 [node name="PawnInfoUI" type="PanelContainer" parent="."]
 unique_name_in_owner = true

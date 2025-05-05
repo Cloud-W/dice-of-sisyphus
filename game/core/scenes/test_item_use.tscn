@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi0tho75j87o6"]
+
+[ext_resource type="Script" uid="uid://bhkefeaxbej1h" path="res://game/core/scenes/test_item_use.gd" id="1_c87xo"]
+[ext_resource type="PackedScene" uid="uid://c3tavarpfg1tw" path="res://game/core/scenes/pawn/pawn_info_ui.tscn" id="1_eqceo"]
+[ext_resource type="Resource" uid="uid://mknk3ut3vic2" path="res://game/core/contents/items/item_basic_meal.tres" id="2_0gwni"]
+[ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="3_23u4t"]
+[ext_resource type="Resource" uid="uid://dxbckxaq0klhv" path="res://game/core/contents/commands/pawn_command_default.tres" id="4_23u4t"]
+
+[node name="TestItemUse" type="Node2D"]
+script = ExtResource("1_c87xo")
+item = ExtResource("2_0gwni")
+test_pawn = ExtResource("3_23u4t")
+pawn_command = ExtResource("4_23u4t")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PawnInfoUI" parent="UI/CenterContainer/VBoxContainer" instance=ExtResource("1_eqceo")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonAdd" type="Button" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "添加物品"
+
+[node name="AddItemQuantity" type="LineEdit" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "物品数量"
+alignment = 2
+
+[node name="ButtonUse" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "使用物品"
+
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/HBoxContainer/ButtonAdd" to="." method="_on_button_add_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonUse" to="." method="_on_button_use_pressed"]

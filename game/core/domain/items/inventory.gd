@@ -1,15 +1,6 @@
 ﻿class_name Inventory
 extends Resource
 
-signal inventory_updated
-signal item_added(item: Item, quantity: int)
-signal item_removed(item: Item, quantity: int)
-@export var capacity := 30  # 基础容量
-@export var slots: Array[InventorySlot] = []  # 自定义槽位类型
-
-var _item_count_cache: Dictionary[Item, int] = {}
-
-
 # 自定义槽位数据结构
 class InventorySlot:
 	var item: Item
@@ -21,10 +12,19 @@ class InventorySlot:
 		quantity = _quantity
 
 
+signal inventory_updated
+signal item_added(item: Item, quantity: int)
+signal item_removed(item: Item, quantity: int)
+@export var capacity := 30  # 基础容量
+
+var _slots: Array[InventorySlot] = []  # 自定义槽位类型
+var _item_count_cache: Dictionary[Item, int] = {}
+
+
 func _init():
-	slots.resize(capacity)
+	_slots.resize(capacity)
 	for i in capacity:
-		slots[i] = InventorySlot.new()
+		_slots[i] = InventorySlot.new()
 
 
 # 添加物品
@@ -33,7 +33,7 @@ func add_item(item: Item, quantity: int = 1) -> int:
 	var remaining: int = quantity
 
 	# 优先堆叠已有物品
-	for slot in slots:
+	for slot in _slots:
 		if slot.item == item and slot.quantity < item.max_stack:
 			var can_add = min(item.max_stack - slot.quantity, remaining)
 			slot.quantity += can_add
@@ -42,8 +42,8 @@ func add_item(item: Item, quantity: int = 1) -> int:
 
 	# 填充空槽位
 	if remaining > 0:
-		for i in slots.size():
-			var slot: InventorySlot = slots[i]
+		for i in _slots.size():
+			var slot: InventorySlot = _slots[i]
 			if slot.item == null:
 				var add_qty = min(item.max_stack, remaining)
 				slot.item = item
@@ -74,15 +74,15 @@ func remove_item(item: Item, quantity: int, force_remove: bool = false) -> bool:
 	quantity = min(item_count, quantity)
 	var remaining_to_remove: int = quantity
 	# 反向遍历以避免索引错位
-	for i in range(slots.size()-1, -1, -1):
-		var slot: InventorySlot = slots[i]
+	for i in range(_slots.size()-1, -1, -1):
+		var slot: InventorySlot = _slots[i]
 		if slot.item == item:
 			var remove_amount = min(slot.quantity, remaining_to_remove)
 			slot.quantity -= remove_amount
 			remaining_to_remove -= remove_amount
 
 			if slot.quantity == 0:
-				slots[i].item = null
+				_slots[i].item = null
 
 			if remaining_to_remove <= 0:
 				break
@@ -115,7 +115,7 @@ func transfer_to(target_inventory: Inventory, item: Item, quantity: int) -> int:
 		if remaining < transfer_amount:
 			remove_item(item, transfer_amount - remaining)
 			return transfer_amount - remaining
-		
+
 	return 0
 
 

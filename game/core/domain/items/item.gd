@@ -10,11 +10,15 @@ extends Resource
 @export_multiline var description: String
 
 
+func can_use(user: Object)-> bool:
+	return true
+
+
 # 使用物品的抽象方法（子类需实现）
-func use(user: ItemUser):
+func use(user: Object)-> void:
 	# 事件广播（可能）
 	_on_use(user)
 
 
-func _on_use(user: ItemUser):
+func _on_use(user: Object)-> void:
 	pass

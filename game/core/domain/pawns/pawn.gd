@@ -23,10 +23,14 @@ var coordPos: Vector2i;
 # 当前移动方向
 var direction: Vector2i
 var state_container: StateContainer = StateContainer.new()
-var events : PawnEvnets = PawnEvnets.new() 
+var events: PawnEvnets              = PawnEvnets.new()
+var inventory: Inventory            = Inventory.new()
 
 var command: PawnCommand:
 	get:
+		if not _command:
+			return null
+			
 		_command.pawn = self
 		return _command
 	set(value):
@@ -70,4 +74,3 @@ func _generate_seed_from_name(value: String) -> void:
 
 func roll_dice() -> int:
 	return _rand.randi_range(1, 6)
-

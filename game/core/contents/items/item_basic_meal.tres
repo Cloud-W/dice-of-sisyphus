@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://mknk3ut3vic2"]
+
+[ext_resource type="Script" uid="uid://dwwv1r63fvawg" path="res://game/core/contents/items/item_basic_meal.gd" id="1_bdqpy"]
+[ext_resource type="Texture2D" uid="uid://c8yvl07no3did" path="res://game/art/kenney_tiny-battle/Tiles/tile_0094.png" id="1_tanup"]
+
+[resource]
+script = ExtResource("1_bdqpy")
+effect_value = 10
+id = "item_basic_meal"
+name = "生命体征维持餐"
+icon = ExtResource("1_tanup")
+max_stack = 5
+item_type = ""
+description = "碳水化合物+脂肪+蛋白质 = ？"
