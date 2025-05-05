@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4m8iuf30opxr"]
+
+[ext_resource type="Texture2D" uid="uid://dtuh86vso1xpi" path="res://game/art/kenney_tiny-battle/Tiles/tile_0005.png" id="1_310ja"]
+[ext_resource type="Script" uid="uid://dovkyo1qm2jws" path="res://game/core/scenes/item/item_view.gd" id="1_wamtw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhjqr"]
+bg_color = Color(0.127288, 0.275164, 0.376461, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.782319, 0.542194, 0.297665, 1)
+
+[node name="ItemView" type="Control"]
+custom_minimum_size = Vector2(24, 26)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wamtw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vhjqr")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_310ja")
+
+[node name="Quantity" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -14.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"LabelItemQuantity"
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

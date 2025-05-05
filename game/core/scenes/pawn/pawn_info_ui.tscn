@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3tavarpfg1tw"]
+[gd_scene load_steps=4 format=3 uid="uid://c3tavarpfg1tw"]
 
 [ext_resource type="Script" uid="uid://co260uon8qd0n" path="res://game/core/scenes/pawn/pawn_info_ui.gd" id="1_jvlo8"]
 [ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="2_17fb0"]
+[ext_resource type="PackedScene" uid="uid://b7co3inxfkxyj" path="res://game/core/scenes/item/inventory_view.tscn" id="3_ytcme"]
 
 [node name="PawnInfoUI" type="PanelContainer"]
 anchors_preset = 1
@@ -77,3 +78,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "还活着"
 horizontal_alignment = 2
+
+[node name="InventoryView" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_ytcme")]
+unique_name_in_owner = true
+layout_mode = 2

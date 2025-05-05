@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7co3inxfkxyj"]
+
+[ext_resource type="Script" uid="uid://d0c7opmo508b1" path="res://game/core/scenes/item/inventory_view.gd" id="1_7clvp"]
+[ext_resource type="PackedScene" uid="uid://b4m8iuf30opxr" path="res://game/core/scenes/item/item_view.tscn" id="1_vhjqr"]
+
+[node name="InventoryView" type="GridContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 108.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+script = ExtResource("1_7clvp")
+
+[node name="ItemView" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2
+
+[node name="ItemView2" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2
+
+[node name="ItemView3" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2
+
+[node name="ItemView4" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2
+
+[node name="ItemView5" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2
+
+[node name="ItemView6" parent="." instance=ExtResource("1_vhjqr")]
+layout_mode = 2

@@ -7,6 +7,7 @@ extends PanelContainer
 @onready var gold_label = %GoldLabel
 @onready var health_label = %HealthLabel
 @onready var status_label = %StatusLabel
+@onready var inventory_view: InventoryView = %InventoryView
 
 
 func _set_pawn(value: Pawn) -> void:
@@ -16,6 +17,8 @@ func _set_pawn(value: Pawn) -> void:
 	pawn = value
 	if not is_node_ready():
 		await ready
+
+	inventory_view.inventory = pawn.inventory
 
 	_connect_signals()
 	_update_pawn()

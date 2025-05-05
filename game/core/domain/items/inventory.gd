@@ -1,4 +1,4 @@
-﻿class_name Inventory
+class_name Inventory
 extends Resource
 
 # 自定义槽位数据结构
@@ -25,6 +25,10 @@ func _init():
 	_slots.resize(capacity)
 	for i in capacity:
 		_slots[i] = InventorySlot.new()
+
+
+func get_all() ->Array[InventorySlot]:
+	return _slots.filter(func (x): return x.item != null)
 
 
 # 添加物品
@@ -127,4 +131,3 @@ func _update_cache(item: Item, delta: int):
 			_item_count_cache.erase(item)
 	else:
 		_item_count_cache[item] = delta
-
