@@ -27,6 +27,11 @@ func minus_health(value: int) ->void:
 	pawn.health = max(pawn.health - value, 0)
 
 
+func add_item(item: Item, quantity: int) ->void:
+	pawn.inventory.add_item(item, quantity)
+	print("获得物品: %s [%s]" % [item.name, quantity])
+
+
 func use_item(item: Item, quantity: int) ->void:
 	if not pawn.inventory.has_item(item, quantity):
 		return

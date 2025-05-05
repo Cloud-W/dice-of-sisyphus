@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://mknk3ut3vic2"]
 
 [ext_resource type="Script" uid="uid://dwwv1r63fvawg" path="res://game/core/contents/items/item_basic_meal.gd" id="1_bdqpy"]
-[ext_resource type="Texture2D" uid="uid://c8yvl07no3did" path="res://game/art/kenney_tiny-battle/Tiles/tile_0094.png" id="1_tanup"]
+[ext_resource type="Texture2D" uid="uid://d283f4v4e4aub" path="res://game/art/icons/onigiri_1.png" id="1_tanup"]
 
 [resource]
 script = ExtResource("1_bdqpy")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://byrcy0am10nl3"]
+
+[ext_resource type="Script" uid="uid://w0piutgiwse5" path="res://game/core/contents/events/obtain_food/event_obtain_food.gd" id="1_q62x7"]
+[ext_resource type="Resource" uid="uid://mknk3ut3vic2" path="res://game/core/contents/items/item_basic_meal.tres" id="2_7btvj"]
+[ext_resource type="Texture2D" uid="uid://d283f4v4e4aub" path="res://game/art/icons/onigiri_1.png" id="2_q62x7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08vax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q62x7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ObtainFood" type="Node2D" node_paths=PackedStringArray("_animation")]
+script = ExtResource("1_q62x7")
+item = ExtResource("2_7btvj")
+quantity = 2
+_animation = NodePath("Animation")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_08vax")
+frame_progress = 0.528653

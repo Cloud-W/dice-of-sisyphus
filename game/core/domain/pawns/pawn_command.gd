@@ -20,5 +20,9 @@ func minus_health(value: int) ->void:
 	pass
 
 
+func add_item(item: Item, quantity: int) ->void:
+	pass
+
+
 func use_item(item: Item, quantity: int) ->void:
 	pass

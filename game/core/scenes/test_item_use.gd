@@ -18,8 +18,7 @@ func _on_button_add_pressed() -> void:
 	if not text:
 		return
 	var quantity := int(text)
-	test_pawn.inventory.add_item(item, quantity)
-	print("add %s: %s" % [item.name, quantity])
+	test_pawn.command.add_item(item, quantity)
 
 
 func _on_button_use_pressed() -> void:
