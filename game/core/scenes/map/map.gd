@@ -3,9 +3,8 @@ extends Node2D
 
 @export var _static_layer: TileMapLayer
 @export var _dynamic_layer: TileMapLayer
-@export var church: Church
-
 @export var _start_point_id: int = 2
+
 
 func _ready():
 	_dynamic_layer.child_order_changed.connect(_on_dynamic_layer_change)
@@ -14,7 +13,7 @@ func _ready():
 func _on_dynamic_layer_change():
 	for child: Node2D in _dynamic_layer.get_children():
 		var coord: Vector2 = _dynamic_layer.local_to_map(child.position)
-		var source_id = _dynamic_layer.get_cell_source_id(coord)
+		var source_id      = _dynamic_layer.get_cell_source_id(coord)
 		print("动态层格子坐标：", coord, " source_id: ", source_id)
 		_dynamic_layer.set_cell(coord, source_id, Vector2i.ZERO, child.get_index())
 	pass
@@ -39,17 +38,11 @@ func _get_cell_world_pos(layer: TileMapLayer, coord: Vector2i) -> Vector2:
 	return to_global(layer.map_to_local(coord))
 
 
-func enter_cell(pawn: Pawn) -> void:
-	print("enter cell")
-	var index: int = _dynamic_layer.get_cell_alternative_tile(pawn.coordPos)
+func get_event_node(coordPos: Vector2i) ->EventNode:
+	var index: int = _dynamic_layer.get_cell_alternative_tile(coordPos)
 	if index < 0:
-		return
-	var event_node: EventNode = _dynamic_layer.get_child(index)
-	print((event_node.get_script() as Script).resource_path)
-	event_node.church = church
-	event_node.pawn = pawn
-	await event_node.trigger()
-	pawn.events.event_completed.emit(event_node)
+		return null
+	return _dynamic_layer.get_child(index)
 
 
 func move_pawn(pawn: Pawn, move: int) -> Array[Vector2i]:

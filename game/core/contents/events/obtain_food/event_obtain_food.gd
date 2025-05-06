@@ -4,7 +4,7 @@ extends EventNode
 @export var quantity: int = 1
 
 
-func _on_trigger() -> void:
+func _on_stop() -> void:
 	assert(item != null)
 	
 	pawn.command.add_item(item, quantity)

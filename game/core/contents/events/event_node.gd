@@ -13,14 +13,32 @@ func _ready():
 		_animation.play("default")
 
 
-func trigger()->void:
+func has_pass_event() -> bool:
+	return false
+
+
+func trigger_stop()->void:
 	is_completed = false
-	_on_trigger()
+	_on_stop()
 	if not is_completed:
 		await event_completed
 
 
-func _on_trigger()->void:
+func trigger_pass()->void:
+	if not has_pass_event():
+		return
+		
+	is_completed = false
+	_on_pass()
+	if not is_completed:
+		await event_completed
+
+
+func _on_stop()->void:
+	pass
+
+
+func _on_pass()->void:
 	pass
 
 

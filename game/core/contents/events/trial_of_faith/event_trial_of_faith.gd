@@ -7,7 +7,7 @@ extends EventNode
 @export var _gain_gold_range: Vector2i
 
 
-func _on_trigger() -> void:
+func _on_stop() -> void:
 	if pawn.health < _health_limit or pawn.gold < _gold_limit:
 		complete_event()
 		return

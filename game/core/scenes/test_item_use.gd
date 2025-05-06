@@ -9,9 +9,6 @@ extends Node2D
 
 func _ready() -> void:
 	test_pawn.command = pawn_command
-	print("wtf :")
-	print("wtf :", test_pawn.command == null)
-
 
 func _on_button_add_pressed() -> void:
 	var text: String = _add_item_quantity.text

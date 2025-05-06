@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://p2q84onvkvsp" path="res://game/core/scenes/pawn/pawn_service.tscn" id="9_mlnkw"]
 [ext_resource type="PackedScene" uid="uid://cspme4b3db000" path="res://game/core/scenes/pawn/all_pawn_info_ui.tscn" id="11_vhw5r"]
 [ext_resource type="PackedScene" uid="uid://1euha6fsn0bp" path="res://game/core/scenes/pawn/add_pawn_panel.tscn" id="13_vhw5r"]
-[ext_resource type="Script" path="res://game/core/scenes/pawn/pawn_manager.gd" id="14_a63di"]
+[ext_resource type="Script" uid="uid://bow436us63p0t" path="res://game/core/scenes/pawn/pawn_manager.gd" id="14_a63di"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("_map")]
 script = ExtResource("1_vdwig")
@@ -20,7 +20,7 @@ _pawn = ExtResource("7_350ir")
 _church = ExtResource("3_3sc3p")
 _is_auto_roll = true
 _map = NodePath("Visuals/Map")
-_debug_move_step = 0
+_debug_move_step = 6
 
 [node name="Visuals" type="Node2D" parent="."]
 
