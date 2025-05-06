@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8dkggxhkoye"]
+[gd_scene load_steps=6 format=3 uid="uid://b8dkggxhkoye"]
 
 [ext_resource type="Script" uid="uid://wrvw5ea4axsu" path="res://game/core/contents/events/event_start_point.gd" id="1_boap5"]
 [ext_resource type="Texture2D" uid="uid://bmjtq7vwersce" path="res://game/art/kenney_tiny-battle/Tiles/tile_0052.png" id="1_iaitk"]
 [ext_resource type="Texture2D" uid="uid://cr00u37blwl0v" path="res://game/art/kenney_tiny-battle/Tiles/tile_0053.png" id="2_boap5"]
+[ext_resource type="Resource" uid="uid://mknk3ut3vic2" path="res://game/core/contents/items/item_basic_meal.tres" id="2_enn64"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_enn64"]
 animations = [{
@@ -20,6 +21,7 @@ animations = [{
 
 [node name="StartPoint" type="Node2D" node_paths=PackedStringArray("_animation")]
 script = ExtResource("1_boap5")
+_item = ExtResource("2_enn64")
 _animation = NodePath("Animation")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]

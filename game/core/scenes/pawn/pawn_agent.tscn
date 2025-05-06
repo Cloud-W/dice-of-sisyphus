@@ -12,7 +12,7 @@ font_size = 12
 z_index = 100
 script = ExtResource("1_ed2x2")
 _pawn_name = NodePath("Label")
-_step_duration = 0.25
+_step_duration = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5imvg")

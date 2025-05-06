@@ -102,6 +102,7 @@ animations = [{
 
 [node name="DiceView" type="Node2D"]
 script = ExtResource("1_4843f")
+anim_time = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

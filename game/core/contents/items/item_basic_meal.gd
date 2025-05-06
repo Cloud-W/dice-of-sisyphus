@@ -11,4 +11,3 @@ func _on_use(user: Object) -> void:
 	print("使用物品: %s" % self.name)
 	user.call("add_health", effect_value)
 	
-

@@ -33,8 +33,12 @@ func add_item(item: Item, quantity: int) ->void:
 
 
 func use_item(item: Item, quantity: int) ->void:
+	if quantity <= 0:
+		return
+		
 	if not pawn.inventory.has_item(item, quantity):
 		return
 
 	pawn.inventory.remove_item(item, quantity)
-	item.use(self)
+	for i in range(quantity):
+		item.use(pawn.command)
