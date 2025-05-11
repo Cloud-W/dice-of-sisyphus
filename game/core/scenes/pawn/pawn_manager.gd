@@ -5,7 +5,7 @@ extends Node
 signal on_pawn_created(pawn: Pawn)
 @export var _pawn_agent: PackedScene
 
-var _current_index: int = 0
+var _current_index: int            = 0
 var _pawns: Array[Pawn]            = []
 var _pawn_agents: Array[PawnAgent] = []
 
@@ -16,7 +16,7 @@ var _pawn_agents: Array[PawnAgent] = []
 
 func create_pawn(pawn_name: String) -> PawnAgent:
 	# Create a new pawn and add it to the _pawns array.
-	var pawn  = Pawn.new()
+	var pawn        = Pawn.new()
 	pawn.name = pawn_name
 	pawn.gold = _init_pawn_gold
 	pawn.health = _init_pawn_health
@@ -26,6 +26,10 @@ func create_pawn(pawn_name: String) -> PawnAgent:
 	agent.pawn = pawn
 	add_child(agent)
 	on_pawn_created.emit(pawn)
+	
+	if get_lived_pawn_num() == 1:
+		next_lived_pawn()
+		
 	return agent
 
 
@@ -47,6 +51,26 @@ func next_pawn() -> void:
 		_current_index = 0
 
 
+func next_lived_pawn() -> void:
+	if get_lived_pawn_num() == 0:
+		return
+
+	while true:
+		next_pawn()
+		if not _pawns[_current_index].is_dead:
+			break
+
+
 func get_pawn_num() -> int:
 	# Return the number of pawns.
 	return _pawns.size()
+
+
+func get_lived_pawn_num() -> int:
+	var result: int = 0
+	for pawn in _pawns:
+		if not pawn.is_dead:
+			result += 1
+
+	return result
+	

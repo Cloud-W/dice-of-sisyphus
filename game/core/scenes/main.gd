@@ -44,7 +44,7 @@ func _init_pawn_agent(pawn_agent: PawnAgent) -> void:
 
 	pawn.direction = Vector2(1, 0)
 	print("地图对象：", _map.name)
-	pawn.coordPos = _map.get_start_coordinates()
+	pawn.coord_pos = _map.get_start_coordinates()
 
 	pawn_agent.move_to(_map.get_start_point())
 
@@ -73,7 +73,7 @@ func _move_pawn(step: int):
 		path_positions,
 		func(index):
 			pawn.direction = path[index + 1] - path[index]
-			pawn.coordPos = path[index + 1]
+			pawn.coord_pos = path[index + 1]
 			await _pass_current_cell(pawn)
 	)
 	# 处理时间的流逝
@@ -82,9 +82,14 @@ func _move_pawn(step: int):
 
 	await _enter_current_cell(pawn)
 	move_pawn_completed.emit(pawn)
-	_pawn_manager.next_pawn()
+	
+	if pawn.is_dead:
+		pawn_agent.hide()
+	
+	_pawn_manager.next_lived_pawn()
 
-	if _is_auto_roll and not pawn.is_dead:
+	#	if _is_auto_roll and not pawn.is_dead:
+	if _is_auto_roll and _pawn_manager.get_lived_pawn_num() > 0:
 		_roll_dice()
 
 
@@ -106,7 +111,7 @@ func _roll_dice() -> void:
 
 
 func _enter_current_cell(pawn: Pawn) -> void:
-	var event_node: EventNode = _map.get_event_node(pawn.coordPos)
+	var event_node: EventNode = _map.get_event_node(pawn.coord_pos)
 	if not event_node:
 		return
 	print((event_node.get_script() as Script).resource_path)
@@ -123,7 +128,7 @@ func _exit_current_cell() -> void:
 
 
 func _pass_current_cell(pawn: Pawn) -> void:
-	var event_node: EventNode = _map.get_event_node(pawn.coordPos)
+	var event_node: EventNode = _map.get_event_node(pawn.coord_pos)
 	if not event_node:
 		return
 	# 给定需要的上下文参数

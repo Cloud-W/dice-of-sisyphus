@@ -19,7 +19,7 @@ signal status_changed
 var _rand: RandomNumberGenerator = RandomNumberGenerator.new()
 var _command: PawnCommand
 # 地图上的坐标值
-var coordPos: Vector2i;
+var coord_pos: Vector2i;
 # 当前移动方向
 var direction: Vector2i
 var state_container: StateContainer = StateContainer.new()

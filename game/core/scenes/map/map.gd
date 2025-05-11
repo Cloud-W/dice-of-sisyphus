@@ -36,11 +36,11 @@ func _get_scene_tile_scene(tile_map_layer: TileMapLayer, coordPos: Vector2i) -> 
 
 func push_event_secne(coordPos: Vector2i, event_scene: PackedScene) -> void:
 	var event_node: EventNode = event_scene.instantiate()
-	event_node.global_position = get_waypoint_pos(coordPos)
 	push_event(coordPos, event_node)
 
 
 func push_event(coordPos: Vector2i, event_node: EventNode) -> void:
+	event_node.global_position = get_waypoint_pos(coordPos)
 	_event_layer.push_event(coordPos, event_node)
 
 
@@ -77,7 +77,7 @@ func get_event_node(coordPos: Vector2i) ->EventNode:
 
 func move_pawn(pawn: Pawn, move: int) -> Array[Vector2i]:
 	var path: Array[Vector2i] = []
-	var next_cell             = pawn.coordPos
+	var next_cell             = pawn.coord_pos
 	var dir                   = pawn.direction
 
 	path.append(next_cell)
