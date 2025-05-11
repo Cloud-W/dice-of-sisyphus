@@ -20,7 +20,7 @@ _pawn = ExtResource("7_350ir")
 _church = ExtResource("3_3sc3p")
 _is_auto_roll = true
 _map = NodePath("Visuals/Map")
-_debug_move_step = 6
+_debug_move_step = 3
 
 [node name="Visuals" type="Node2D" parent="."]
 

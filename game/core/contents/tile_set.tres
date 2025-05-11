@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://ce4qcc6o1f3o7"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://ce4qcc6o1f3o7"]
 
 [ext_resource type="Texture2D" uid="uid://pkybwkxx0qjh" path="res://game/art/kenney_tiny-battle/Tilemap/tilemap_packed.png" id="1_ppkrv"]
 [ext_resource type="PackedScene" uid="uid://ggy6a88luxi4" path="res://game/core/contents/events/game_of_fortune/event_game_of_fortune.tscn" id="2_nly4g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfr2egkl3b71v" path="res://game/core/contents/events/trial_of_faith/event_trial_of_faith.tscn" id="4_4t7jd"]
 [ext_resource type="PackedScene" uid="uid://buos4mh36lo1q" path="res://game/core/contents/events/festival/event_festival.tscn" id="5_whnae"]
 [ext_resource type="PackedScene" uid="uid://byrcy0am10nl3" path="res://game/core/contents/events/obtain_food/event_obtain_food.tscn" id="6_621g1"]
+[ext_resource type="PackedScene" uid="uid://bakbci0qeps53" path="res://game/core/contents/events/tombstone/event_tombstone.tscn" id="7_idx4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2sapq"]
 texture = ExtResource("1_ppkrv")
@@ -228,6 +229,10 @@ scenes/1/scene = ExtResource("5_whnae")
 resource_name = "event_obtain_food"
 scenes/1/scene = ExtResource("6_621g1")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_86h3k"]
+resource_name = "event_tombstone"
+scenes/1/scene = ExtResource("7_idx4m")
+
 [resource]
 custom_data_layer_0/name = ""
 custom_data_layer_0/type = 2
@@ -237,3 +242,4 @@ sources/2 = SubResource("TileSetScenesCollectionSource_4t7jd")
 sources/3 = SubResource("TileSetScenesCollectionSource_whnae")
 sources/4 = SubResource("TileSetScenesCollectionSource_621g1")
 sources/5 = SubResource("TileSetScenesCollectionSource_idx4m")
+sources/6 = SubResource("TileSetScenesCollectionSource_86h3k")

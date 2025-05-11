@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bakbci0qeps53"]
+
+[ext_resource type="Script" uid="uid://dfvb2ul7lmeew" path="res://game/core/contents/events/tombstone/event_tombstone.gd" id="1_khd63"]
+[ext_resource type="Resource" uid="uid://b45utuprl1cjo" path="res://game/core/contents/test_pawn.tres" id="2_1mk4f"]
+[ext_resource type="Texture2D" uid="uid://bdsbx3gt2bme2" path="res://game/art/icons/TX Props-2.png" id="2_khd63"]
+
+[node name="Tombstone" type="Node2D"]
+script = ExtResource("1_khd63")
+diedPawn = ExtResource("2_1mk4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_khd63")
+offset = Vector2(0, -2)
