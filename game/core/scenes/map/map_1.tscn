@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bcdq1xwrrco2w"]
+[gd_scene load_steps=4 format=4 uid="uid://bcdq1xwrrco2w"]
 
 [ext_resource type="Script" uid="uid://ifahcp110mte" path="res://game/core/scenes/map/map.gd" id="1_77p4i"]
 [ext_resource type="TileSet" uid="uid://ce4qcc6o1f3o7" path="res://game/core/contents/tile_set.tres" id="1_qytk3"]
+[ext_resource type="Script" uid="uid://nc1tjqro0etg" path="res://game/core/scenes/map/event_collection.gd" id="3_0jgqo"]
 
 [node name="Map" type="Node2D" node_paths=PackedStringArray("_static_layer", "_dynamic_layer")]
 script = ExtResource("1_77p4i")
@@ -16,3 +17,7 @@ tile_set = ExtResource("1_qytk3")
 z_index = 10
 tile_map_data = PackedByteArray("AAD+////AQAAAAAAAQAEAP3/AQAAAAAAAQD6/wMAAgAAAAAAAQD///z/AQAAAAAAAQAEAP//AwAAAAAAAQAEAAMABQAAAAAAAQD8/wAABQAAAAAAAQD8/wMAAQAAAAAAAQACAAMAAQAAAAAAAQD//wMAAwAAAAAAAQAEAAEABAAAAAAAAQABAPz/AwAAAAAAAQADAPz/BQAAAAAAAQD6/wAAAQAAAAAAAQD9/wMABgAAAAAAAQA=")
 tile_set = ExtResource("1_qytk3")
+
+[node name="EventLayer" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_0jgqo")

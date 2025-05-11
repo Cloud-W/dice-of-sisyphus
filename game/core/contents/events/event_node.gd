@@ -1,5 +1,5 @@
 class_name EventNode
-extends Node
+extends Node2D
 signal event_completed
 @export var pawn: Pawn
 @export var church: Church
