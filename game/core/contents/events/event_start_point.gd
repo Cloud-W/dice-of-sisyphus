@@ -16,10 +16,13 @@ func _on_stop() -> void:
 
 
 func _on_pass() -> void:
-	# 吃维持餐
-	var item_count: int = pawn.inventory.get_item_count(_item)
-	var use_count: int  = min(item_count, _max_use)
-	pawn.command.use_item(_item, use_count)
+	# 不爱吃饭的人，不吃饭就饿死
+	if pawn.name != "不爱吃饭":
+		# 吃维持餐
+		var item_count: int = pawn.inventory.get_item_count(_item)
+		var use_count: int  = min(item_count, _max_use)
+		pawn.command.use_item(_item, use_count)
+		
 	pawn.events.day_finished.emit()
 	complete_event()
 

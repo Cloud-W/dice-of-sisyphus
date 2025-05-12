@@ -14,14 +14,14 @@ func _ready():
 
 
 func _create_event_nodes() ->void:
-	for coordPos: Vector2i in _dynamic_layer.get_used_cells():
-		var scene: PackedScene = _get_scene_tile_scene(_dynamic_layer, coordPos)
+	for coord_pos: Vector2i in _dynamic_layer.get_used_cells():
+		var scene: PackedScene = _get_scene_tile_scene(_dynamic_layer, coord_pos)
 		if scene:
-			push_event_secne(coordPos, scene)
+			push_event_secne(coord_pos, scene)
 
 
-func _get_scene_tile_scene(tile_map_layer: TileMapLayer, coordPos: Vector2i) -> PackedScene:
-	var source_id: int = tile_map_layer.get_cell_source_id(coordPos)
+func _get_scene_tile_scene(tile_map_layer: TileMapLayer, coord_pos: Vector2i) -> PackedScene:
+	var source_id: int = tile_map_layer.get_cell_source_id(coord_pos)
 	if source_id <= -1:
 		return null
 
@@ -29,23 +29,28 @@ func _get_scene_tile_scene(tile_map_layer: TileMapLayer, coordPos: Vector2i) -> 
 	if scene_source is not TileSetScenesCollectionSource:
 			return null
 
-	var alt_id: int = tile_map_layer.get_cell_alternative_tile(coordPos)
+	var alt_id: int = tile_map_layer.get_cell_alternative_tile(coord_pos)
 	# 分配的 PackedScene。
 	return scene_source.get_scene_tile_scene(alt_id)
 
 
-func push_event_secne(coordPos: Vector2i, event_scene: PackedScene) -> void:
+func push_event_secne(coord_pos: Vector2i, event_scene: PackedScene) -> void:
 	var event_node: EventNode = event_scene.instantiate()
-	push_event(coordPos, event_node)
+	push_event(coord_pos, event_node)
 
 
-func push_event(coordPos: Vector2i, event_node: EventNode) -> void:
-	event_node.global_position = get_waypoint_pos(coordPos)
-	_event_layer.push_event(coordPos, event_node)
+func push_event(coord_pos: Vector2i, event_node: EventNode) -> void:
+	event_node.coord_pos = coord_pos
+	event_node.global_position = get_waypoint_pos(coord_pos)
+	_event_layer.push_event(coord_pos, event_node)
 
 
-func pop_event(coordPos: Vector2i) -> void:
-	_event_layer.pop_event(coordPos)
+func pop_event(coord_pos: Vector2i) -> void:
+	_event_layer.pop_event(coord_pos)
+
+	
+func erase_event(event_node: EventNode) -> void:
+	_event_layer.erase_event(event_node)
 
 
 func get_start_coordinates() -> Vector2i:
@@ -67,11 +72,11 @@ func _get_cell_world_pos(layer: TileMapLayer, coord: Vector2i) -> Vector2:
 	return to_global(layer.map_to_local(coord))
 
 
-func get_event_node(coordPos: Vector2i) -> EventNode:
-	return _event_layer.get_event(coordPos)
+func get_event_node(coord_pos: Vector2i) -> EventNode:
+	return _event_layer.get_event(coord_pos)
 
-func get_all_event_nodes(coordPos: Vector2i) -> Array[EventNode]:
-	return _event_layer.get_all_events(coordPos)
+func get_all_event_nodes(coord_pos: Vector2i) -> Array[EventNode]:
+	return _event_layer.get_all_events(coord_pos)
 
 
 func move_pawn(pawn: Pawn, move: int) -> Array[Vector2i]:

@@ -5,6 +5,9 @@ signal event_completed
 @export var church: Church
 @export var _animation: AnimatedSprite2D
 
+var coord_pos: Vector2i
+var map: Map
+
 var is_completed: bool = false
 
 

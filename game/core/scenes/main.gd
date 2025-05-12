@@ -17,6 +17,9 @@ signal move_pawn_completed(pawn: Pawn)
 @onready var _diceView: DiceView = %DiceView
 
 
+var _event_nodes_cached: Array[EventNode] = []
+
+
 func _ready() -> void:
 	if _init_with_test_pawns:
 		_create_test_pawn()
@@ -110,11 +113,17 @@ func _update_event_context(event_node: EventNode)-> void:
 	var pawn: Pawn            = pawn_agent.pawn
 	event_node.church = _church
 	event_node.pawn = pawn
+	event_node.map = _map
 
 
 func _enter_current_cell(pawn: Pawn) -> void:
 	var event_nodes: Array[EventNode] = _map.get_all_event_nodes(pawn.coord_pos)
-	for event_node in event_nodes:
+	_event_nodes_cached.clear()
+	_event_nodes_cached.append_array(event_nodes)
+	for event_node in _event_nodes_cached:
+		if pawn.is_dead:
+			break
+			
 		_update_event_context(event_node)
 		await event_node.trigger_stop()
 		pawn.events.event_completed.emit(event_node)
@@ -127,7 +136,12 @@ func _exit_current_cell() -> void:
 
 func _pass_current_cell(pawn: Pawn) -> void:
 	var event_nodes: Array[EventNode] = _map.get_all_event_nodes(pawn.coord_pos)
-	for event_node in event_nodes:
+	_event_nodes_cached.clear()
+	_event_nodes_cached.append_array(event_nodes)
+	for event_node in _event_nodes_cached:
+		if pawn.is_dead:
+			break
+			
 		_update_event_context(event_node)
 		await event_node.trigger_pass()
 
