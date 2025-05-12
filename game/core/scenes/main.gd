@@ -4,7 +4,6 @@ signal setup_pawn_requested(pawn: Pawn)
 signal move_pawn_completed(pawn: Pawn)
 #signal roll_requested(result: int)
 
-@export var _pawn: Pawn
 @export var _church: Church
 @export var _is_auto_roll: bool
 @export var _map: Map
@@ -48,10 +47,6 @@ func _init_pawn_agent(pawn_agent: PawnAgent) -> void:
 
 	pawn_agent.move_to(_map.get_start_point())
 
-	# 确保每次角色进入格子时地图是更新完毕的
-	# 后续可以把call_deferred封装进enter_cell方法里
-	_enter_current_cell.call_deferred(_pawn)
-
 
 func start_roll() -> void:
 	_roll_dice()
@@ -82,10 +77,10 @@ func _move_pawn(step: int):
 
 	await _enter_current_cell(pawn)
 	move_pawn_completed.emit(pawn)
-	
+
 	if pawn.is_dead:
 		pawn_agent.hide()
-	
+
 	_pawn_manager.next_lived_pawn()
 
 	#	if _is_auto_roll and not pawn.is_dead:
@@ -110,16 +105,19 @@ func _roll_dice() -> void:
 	_diceView.roll(result)
 
 
-func _enter_current_cell(pawn: Pawn) -> void:
-	var event_node: EventNode = _map.get_event_node(pawn.coord_pos)
-	if not event_node:
-		return
-	print((event_node.get_script() as Script).resource_path)
-	# 给定需要的上下文参数
+func _update_event_context(event_node: EventNode)-> void:
+	var pawn_agent: PawnAgent = _pawn_manager.get_current_pawn()
+	var pawn: Pawn            = pawn_agent.pawn
 	event_node.church = _church
 	event_node.pawn = pawn
-	await event_node.trigger_stop()
-	pawn.events.event_completed.emit(event_node)
+
+
+func _enter_current_cell(pawn: Pawn) -> void:
+	var event_nodes: Array[EventNode] = _map.get_all_event_nodes(pawn.coord_pos)
+	for event_node in event_nodes:
+		_update_event_context(event_node)
+		await event_node.trigger_stop()
+		pawn.events.event_completed.emit(event_node)
 
 
 func _exit_current_cell() -> void:
@@ -128,10 +126,8 @@ func _exit_current_cell() -> void:
 
 
 func _pass_current_cell(pawn: Pawn) -> void:
-	var event_node: EventNode = _map.get_event_node(pawn.coord_pos)
-	if not event_node:
-		return
-	# 给定需要的上下文参数
-	event_node.church = _church
-	event_node.pawn = pawn
-	await event_node.trigger_pass()
+	var event_nodes: Array[EventNode] = _map.get_all_event_nodes(pawn.coord_pos)
+	for event_node in event_nodes:
+		_update_event_context(event_node)
+		await event_node.trigger_pass()
+

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_bdqpy")
-effect_value = 10
+effect_value = 6
 id = "item_basic_meal"
 name = "生命体征维持餐"
 icon = ExtResource("1_tanup")

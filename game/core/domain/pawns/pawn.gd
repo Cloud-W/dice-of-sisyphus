@@ -42,7 +42,7 @@ var rand: RandomNumberGenerator:
 
 var is_dead: bool:
 	get:
-		return health <= 0
+		return health < 0
 
 
 func _set_gold(value: int) -> void:

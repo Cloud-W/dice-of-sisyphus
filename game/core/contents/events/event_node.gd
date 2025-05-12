@@ -18,6 +18,7 @@ func has_pass_event() -> bool:
 
 
 func trigger_stop()->void:
+	print("trigger_stop:", (get_script() as Script).resource_path)
 	is_completed = false
 	_on_stop()
 	if not is_completed:
@@ -25,9 +26,10 @@ func trigger_stop()->void:
 
 
 func trigger_pass()->void:
+	print("trigger_pass:", (get_script() as Script).resource_path)
 	if not has_pass_event():
 		return
-		
+
 	is_completed = false
 	_on_pass()
 	if not is_completed:

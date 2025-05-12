@@ -1,4 +1,4 @@
-﻿class_name EventCollection
+class_name EventCollection
 extends Node
 
 class EventStack:
@@ -15,6 +15,9 @@ class EventStack:
 
 	func peek() -> EventNode:
 		return _array.back()
+		
+	func get_all() -> Array[EventNode]:
+		return _array
 
 
 	func is_empty() -> bool:
@@ -36,6 +39,13 @@ func get_event(coordPos: Vector2i) -> EventNode:
 		return null
 
 	return stack.peek()
+	
+func get_all_events(coordPos: Vector2i) -> Array[EventNode]:
+	var stack: EventStack = _event_map.get(coordPos)
+	if stack == null:
+		return []
+
+	return stack.get_all()
 
 
 func push_event(coordPos: Vector2i, event_node: EventNode) -> void:
@@ -67,4 +77,3 @@ func pop_event(coordPos: Vector2i) -> EventNode:
 	return poped
 		
   
-

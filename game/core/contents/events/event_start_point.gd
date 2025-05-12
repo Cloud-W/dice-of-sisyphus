@@ -20,5 +20,6 @@ func _on_pass() -> void:
 	var item_count: int = pawn.inventory.get_item_count(_item)
 	var use_count: int  = min(item_count, _max_use)
 	pawn.command.use_item(_item, use_count)
+	pawn.events.day_finished.emit()
 	complete_event()
 

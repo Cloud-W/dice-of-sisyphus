@@ -67,12 +67,11 @@ func _get_cell_world_pos(layer: TileMapLayer, coord: Vector2i) -> Vector2:
 	return to_global(layer.map_to_local(coord))
 
 
-func get_event_node(coordPos: Vector2i) ->EventNode:
-	#	var index: int = _dynamic_layer.get_cell_alternative_tile(coordPos)
-	#	if index < 0:
-	#		return null
-	#	return _dynamic_layer.get_child(index)
+func get_event_node(coordPos: Vector2i) -> EventNode:
 	return _event_layer.get_event(coordPos)
+
+func get_all_event_nodes(coordPos: Vector2i) -> Array[EventNode]:
+	return _event_layer.get_all_events(coordPos)
 
 
 func move_pawn(pawn: Pawn, move: int) -> Array[Vector2i]:
